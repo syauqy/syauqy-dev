@@ -23,6 +23,8 @@ export default function Spotify() {
         window.location.hash
       );
       console.log(access_token);
+      localStorage.clear();
+      localStorage.setItem("accessToken", access_token);
     }
   }, []);
   return (
