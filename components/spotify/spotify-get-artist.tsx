@@ -1,5 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
+import Link from "next/link";
+import Tippy from "@tippyjs/react";
+import "tippy.js/dist/tippy.css";
 
 const USER_TOP_ARTIST_ENDPOINT = "https://api.spotify.com/v1/me/top/artists";
 
@@ -17,7 +20,7 @@ export default function SpotifyGetArtist() {
         },
         params: {
           time_range: "short_term",
-          limit: 10,
+          limit: 8,
         },
       })
       .then((res) => {
@@ -29,28 +32,39 @@ export default function SpotifyGetArtist() {
   useEffect(() => {
     if (localStorage.getItem("accessToken")) {
       setToken(localStorage.getItem("accessToken"));
+      getTopArtists();
     }
-    getTopArtists();
+
     console.log(data);
   }, []);
 
   return (
-    <div className="bg-blue-100 rounded-md p-4">
+    <div className="bg-blue-100 rounded-md p-4 flex flex-wrap space-x-4 space-y-4">
       {data?.items
         ? data.items.map((artist, i: number) => (
             <div key={i}>
               <div className="flex-shrink-0">
-                <img
-                  className={`h-${i % 2 == 0 ? 24 : 20} w-${
-                    i % 2 == 0 ? 24 : 20
-                  } object-cover rounded-full`}
-                  src={artist.images[artist.images.length - 2].url}
-                  alt={artist.name}
-                />
+                <Link href={artist.external_urls.spotify} passHref>
+                  <a target="_blank" rel="nofollow noopener noreferrer">
+                    <Tippy
+                      className="rounded-md shadow-lg p-1 bg-gray-800 text-white"
+                      content={<span>{artist.name}</span>}
+                      delay={100}
+                      placement="bottom"
+                      arrow={false}
+                      offset={[0, 5]}
+                    >
+                      <img
+                        className={`h-24 w-24
+                        } object-cover rounded-full`}
+                        src={artist.images[artist.images.length - 2].url}
+                        alt={artist.name}
+                      />
+                    </Tippy>
+                  </a>
+                </Link>
               </div>
-
-              <div>{artist.name}</div>
-              <div>{artist.external_urls.spotify}</div>
+              {/* <div className="rounded shadow-lg p-1 bg-gray-500 text-white -mb-8"></div> */}
             </div>
           ))
         : null}
