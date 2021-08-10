@@ -5,24 +5,50 @@ import { Page } from "~/components/layouts/page";
 import { PageContent } from "~/components/layouts/page-content";
 import { Container } from "~/components/layouts/container";
 import SpotifyGetArtist from "~/components/spotify/spotify-get-artist";
+import SpotifyRecentArtist from "~/components/spotify/spotify-recent-artist";
+import axios from "axios";
 
-const SPOTIFY_AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID}&redirect_uri=http://localhost:3000/spotify&scope=user-top-read%20user-read-recently-played&response_type=token`;
+const SPOTIFY_AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID}&redirect_uri=${process.env.NEXT_PUBLIC_SPOTIFY_REDIRECT_URI}&scope=user-top-read%20user-read-recently-played&response_type=token`;
 
 const meta = {
   title: `Syauqy Aziz`,
-  description: `Product manager and web developer. Currently living in Yogyakarta, Indonesia. Curently building web and mobile software at Jala`,
+  description: `Product manager and web developer living in Yogyakarta, Indonesia. Curently building web and mobile software at Jala`,
 };
 
 const getSpotifyParams = (hash) => {
   const stringAfterHash = hash.substring(1);
   const urlParams = stringAfterHash.split("&");
-  const splittedParams = urlParams.reduce((accumulater, currentValue) => {
-    const [key, value] = currentValue.split("=");
-    accumulater[key] = value;
-    return accumulater;
-  }, {});
+  const splittedParams = urlParams.reduce(
+    (accumulater: string, currentValue: string) => {
+      const [key, value] = currentValue.split("=");
+      accumulater[key] = value;
+      return accumulater;
+    },
+    {}
+  );
   return splittedParams;
 };
+
+function recordAccessToken(token: string) {
+  axios({
+    method: "patch",
+    headers: {
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_AIRTABLE_TOKEN}`,
+      "Content-Type": "application/json",
+    },
+    url: `${process.env.NEXT_PUBLIC_AIRTABLE_URI}/spotify_token`,
+    data: {
+      records: [
+        {
+          id: "recxh8d64XoW8kWTm",
+          fields: {
+            access_token: token,
+          },
+        },
+      ],
+    },
+  });
+}
 
 export default function Spotify() {
   useEffect(() => {
@@ -33,6 +59,7 @@ export default function Spotify() {
       console.log(access_token);
       localStorage.clear();
       localStorage.setItem("accessToken", access_token);
+      recordAccessToken(access_token);
     }
   }, []);
   return (
@@ -52,6 +79,7 @@ export default function Spotify() {
               </a>
             </Link>
             <SpotifyGetArtist />
+            <SpotifyRecentArtist />
           </div>
         </Container>
       </PageContent>

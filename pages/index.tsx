@@ -7,6 +7,7 @@ import { Page } from "~/components/layouts/page";
 import { PageContent } from "~/components/layouts/page-content";
 import { Container } from "~/components/layouts/container";
 import SpotifyGetArtist from "~/components/spotify/spotify-get-artist";
+import SpotifyRecentArtist from "~/components/spotify/spotify-recent-artist";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import useSWR from "swr";
@@ -37,7 +38,7 @@ export default function Home(props: HomeProps) {
 
       <PageContent>
         <Container>
-          <SpotifyGetArtist />
+          <SpotifyRecentArtist />
         </Container>
         {/* {artists.map((artist) => {
           <li>{artist}</li>;

@@ -20,7 +20,7 @@ export default function SpotifyGetArtist() {
         },
         params: {
           time_range: "short_term",
-          limit: 8,
+          limit: 10,
         },
       })
       .then((res) => {
@@ -29,45 +29,60 @@ export default function SpotifyGetArtist() {
       .catch((error) => console.log(error));
   };
 
+  function saveTopArtists(data) {
+    getTopArtists();
+
+    axios({
+      method: "post",
+      headers: {
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_AIRTABLE_TOKEN}`,
+        "Content-Type": "application/json",
+      },
+      url: `${process.env.NEXT_PUBLIC_AIRTABLE_URI}/spotify_artist`,
+      data: generateRecords(data),
+    });
+  }
+
+  const generateRecords = (data) => {
+    console.log(data);
+    const records = {
+      records: data?.items
+        ? data.items.map((artist) => ({
+            fields: {
+              name: artist.name,
+              url: artist.external_urls.spotify,
+              img_url: artist.images[1].url,
+            },
+          }))
+        : {},
+    };
+    console.log(records);
+    return records;
+  };
+
   useEffect(() => {
     if (localStorage.getItem("accessToken")) {
       setToken(localStorage.getItem("accessToken"));
       getTopArtists();
     }
-
-    console.log(data);
   }, []);
+  console.log(data);
+  console.log(generateRecords(data));
 
   return (
-    <div className="bg-blue-100 rounded-md p-4 flex flex-wrap space-x-4 space-y-4">
-      {data?.items
-        ? data.items.map((artist, i: number) => (
-            <div key={i}>
-              <div className="flex-shrink-0">
-                <Link href={artist.external_urls.spotify} passHref>
-                  <a target="_blank" rel="nofollow noopener noreferrer">
-                    <Tippy
-                      className="rounded-md shadow-lg p-1 bg-gray-800 text-white"
-                      content={<span>{artist.name}</span>}
-                      delay={100}
-                      placement="bottom"
-                      arrow={false}
-                      offset={[0, 5]}
-                    >
-                      <img
-                        className={`h-24 w-24
-                        } object-cover rounded-full`}
-                        src={artist.images[artist.images.length - 2].url}
-                        alt={artist.name}
-                      />
-                    </Tippy>
-                  </a>
-                </Link>
-              </div>
-              {/* <div className="rounded shadow-lg p-1 bg-gray-500 text-white -mb-8"></div> */}
-            </div>
-          ))
-        : null}
+    <div>
+      <button
+        className="rounded-full py-3 px-6 bg-gray-400"
+        onClick={() => saveTopArtists(data)}
+      >
+        Save Artist
+      </button>
+      <button
+        className="rounded-full py-3 px-6 bg-gray-400"
+        onClick={() => getTopArtists}
+      >
+        Refresh Artist
+      </button>
     </div>
   );
 }
