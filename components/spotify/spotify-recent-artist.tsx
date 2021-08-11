@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
+import Image from "next/image";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 import clsx from "clsx";
@@ -41,26 +42,30 @@ export default function SpotifyRecentArtist() {
       {artists?.records ? (
         <div className="flex flex-wrap justify-center">
           {artists.records.map((artist, i: number) => (
-            <div key={i} className="p-2">
-              <div className="flex-shrink-0">
-                <Link href={artist.fields.url} passHref>
-                  <a target="_blank" rel="nofollow noopener noreferrer">
-                    <Tippy
-                      className="rounded-md shadow-lg p-1 bg-gray-800 text-white"
-                      content={<span>{artist.fields.name}</span>}
-                      delay={100}
-                      placement="bottom"
-                      arrow={false}
-                      offset={[0, 5]}
-                    >
-                      <img
-                        className="h-20 w-20 object-cover shadow-md rounded-full transform hover:scale-110 hover:rotate-3"
-                        src={artist.fields.img_url}
-                        alt={artist.fields.name}
-                      />
-                    </Tippy>
-                  </a>
-                </Link>
+            <div key={i} className="p-2 ">
+              <div className="flex-shrink-0 transform hover:scale-110 hover:rotate-3">
+                <Tippy
+                  className="rounded-md shadow-lg p-1 bg-gray-800 text-white"
+                  content={<span>{artist.fields.name}</span>}
+                  delay={100}
+                  placement="bottom"
+                  arrow={false}
+                  offset={[0, 5]}
+                >
+                  <div>
+                    <Link href={artist.fields.url} passHref>
+                      <a target="_blank" rel="nofollow noopener noreferrer">
+                        <Image
+                          className="object-cover shadow-md rounded-full"
+                          src={artist.fields.img_url}
+                          alt={artist.fields.name}
+                          width={80}
+                          height={80}
+                        />
+                      </a>
+                    </Link>
+                  </div>
+                </Tippy>
               </div>
             </div>
           ))}
