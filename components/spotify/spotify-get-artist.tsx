@@ -1,8 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import Link from "next/link";
-import Tippy from "@tippyjs/react";
-import "tippy.js/dist/tippy.css";
 
 const USER_TOP_ARTIST_ENDPOINT = "https://api.spotify.com/v1/me/top/artists";
 
@@ -13,6 +10,7 @@ export default function SpotifyGetArtist() {
   console.log(token);
 
   const getTopArtists = () => {
+    getSpotifyToken();
     axios
       .get(USER_TOP_ARTIST_ENDPOINT, {
         headers: {
@@ -26,8 +24,24 @@ export default function SpotifyGetArtist() {
       .then((res) => {
         setData(res.data);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.log(error.response.data));
   };
+
+  async function getSpotifyToken() {
+    axios
+      .get(
+        `${process.env.NEXT_PUBLIC_AIRTABLE_URI}/spotify_token/recxh8d64XoW8kWTm`,
+        {
+          headers: {
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_AIRTABLE_TOKEN}`,
+          },
+        }
+      )
+      .then((res) => {
+        setToken(res.data.fields.access_token);
+      })
+      .catch((error) => console.log(error));
+  }
 
   function saveTopArtists(data) {
     getTopArtists();
@@ -56,15 +70,12 @@ export default function SpotifyGetArtist() {
           }))
         : {},
     };
-    console.log(records);
+    console.log("generate", records);
     return records;
   };
 
   useEffect(() => {
-    if (localStorage.getItem("accessToken")) {
-      setToken(localStorage.getItem("accessToken"));
-      getTopArtists();
-    }
+    getSpotifyToken();
   }, []);
   console.log(data);
   console.log(generateRecords(data));
@@ -73,15 +84,15 @@ export default function SpotifyGetArtist() {
     <div>
       <button
         className="rounded-full py-3 px-6 bg-gray-400"
-        onClick={() => saveTopArtists(data)}
+        onClick={() => getTopArtists()}
       >
-        Save Artist
+        Refresh Artist
       </button>
       <button
         className="rounded-full py-3 px-6 bg-gray-400"
-        onClick={() => getTopArtists}
+        onClick={() => saveTopArtists(data)}
       >
-        Refresh Artist
+        Save Artist
       </button>
     </div>
   );
