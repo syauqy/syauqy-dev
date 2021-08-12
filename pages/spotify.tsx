@@ -36,7 +36,7 @@ export default function Spotify() {
         <Container>
           <div className="space-y-3">
             <Link href={SPOTIFY_AUTH_URL} passHref>
-              <a className="rounded-full py-3 px-6 bg-green-600">
+              <a className="rounded-full w-full py-3 px-6 bg-green-600">
                 Login Spotify
               </a>
             </Link>

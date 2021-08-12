@@ -14,25 +14,25 @@ const meta = {
   description: `Product manager and web developer living in Yogyakarta, Indonesia. Curently building web and mobile software at Jala`,
 };
 
-function getPocketToken() {
-  axios.get(
-    `${process.env.NEXT_PUBLIC_AIRTABLE_URI}/pocket_token/recFdgl3BgXQEzUFX`,
-    {
-      headers: {
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_AIRTABLE_TOKEN}`,
-      },
-    }
-  );
-  //   .then((res) => {
-  //     setArtists(res.data);
-  //   })
-  //   .catch((error) => console.log(error));
-}
+// function getPocketToken() {
+//   axios.get(
+//     `${process.env.NEXT_PUBLIC_AIRTABLE_URI}/pocket_token/recFdgl3BgXQEzUFX`,
+//     {
+//       headers: {
+//         Authorization: `Bearer ${process.env.NEXT_PUBLIC_AIRTABLE_TOKEN}`,
+//       },
+//     }
+//   );
+//   //   .then((res) => {
+//   //     setArtists(res.data);
+//   //   })
+//   //   .catch((error) => console.log(error));
+// }
 
 export default function PemudaSetempat() {
   async function getRequestToken() {
     const response = await fetch(
-      "http://localhost:3000/api/get-pocket-request"
+      `${process.env.NEXT_PUBLIC_HOST}/api/get-pocket-request`
     );
     const { code } = await response.json();
     console.log(code);
@@ -47,9 +47,9 @@ export default function PemudaSetempat() {
 
   async function getAccessToken() {
     const response = await fetch(
-      `http://localhost:3000/api/get-pocket-token?code=${localStorage.getItem(
-        "pocketRequestToken"
-      )}`
+      `${
+        process.env.NEXT_PUBLIC_HOST
+      }/api/get-pocket-token?code=${localStorage.getItem("pocketRequestToken")}`
     );
     const { access_token, username } = await response.json();
     recordPocketAccessToken(access_token, username);
@@ -81,7 +81,9 @@ export default function PemudaSetempat() {
 
   async function getPocketArticles() {
     const response = await fetch(
-      `http://localhost:3000/api/get-pocket-articles?access_token=${localStorage.getItem(
+      `${
+        process.env.NEXT_PUBLIC_HOST
+      }/api/get-pocket-articles?access_token=${localStorage.getItem(
         "pocketAccessToken"
       )}`
     );
@@ -111,13 +113,20 @@ export default function PemudaSetempat() {
               title: articles[article].resolved_title,
               img_url: articles[article].top_image_url,
               url: articles[article].resolved_url,
-              read_time: articles[article].time_to_read,
-              author_name: Object.keys(articles[article].authors).map(
-                (author) => articles[article].authors[author].name
-              )[0],
-              author_url: Object.keys(articles[article].authors).map(
-                (author) => articles[article].authors[author].url
-              )[0],
+              read_time:
+                articles[article].time_to_read !== "0"
+                  ? articles[article].time_to_read
+                  : "0",
+              author_name: articles[article].authors
+                ? Object.keys(articles[article].authors).map(
+                    (author) => articles[article].authors[author].name
+                  )[0]
+                : "none",
+              author_url: articles[article].authors
+                ? Object.keys(articles[article].authors).map(
+                    (author) => articles[article].authors[author].url
+                  )[0]
+                : "none",
             },
           }))
         : {},

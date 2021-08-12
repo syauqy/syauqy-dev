@@ -29,11 +29,13 @@ export default function PocketRecentArticles() {
   }, []);
   return (
     <div className="p-4 pb-6 w-full bg-white bg-opacity-50 shadow-md rounded-md">
-      <h2 className="text-center p-2 text-gray-700">Recent reads 🗞️</h2>
+      <h2 className="text-lg font-semibold py-2 text-gray-700">
+        Recent reads 🗞️
+      </h2>
       <div className="flex flex-col space-y-4">
         {articles?.records ? (
           articles?.records.map((article, i) => (
-            <div className="space-y-2 p-2" key={i}>
+            <div className="space-y-2 py-2" key={i}>
               <h2 className="text-xl font-semibold">
                 <Link href={article.fields.url} passHref>
                   <a target="_blank" rel="nofollow noopener noreferrer">
@@ -54,14 +56,25 @@ export default function PocketRecentArticles() {
               </div>
               <div>
                 <p className="text-gray-500 text-sm">
-                  <Link href={article.fields.author_url} passHref>
+                  <Link
+                    href={
+                      article.fields.author_url != "none"
+                        ? article.fields.author_url
+                        : "#"
+                    }
+                    passHref
+                  >
                     <a target="_blank" rel="nofollow noopener noreferrer">
-                      {article.fields.author_name === "email"
+                      {article.fields.author_name === "none" || "email"
                         ? ""
                         : article.fields.author_name + " - "}
                     </a>
                   </Link>
-                  <span>{article.fields.read_time} min</span>
+                  <span>
+                    {article.fields.read_time != 0
+                      ? article.fields.read_time + " min"
+                      : ""}
+                  </span>
                 </p>
               </div>
             </div>

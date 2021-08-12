@@ -35,7 +35,7 @@ export default function SpotifyRecentArtist() {
 
   return (
     <div className="p-4 pb-6 w-full bg-white bg-opacity-50 shadow-md rounded-md">
-      <h2 className="text-lg font-semibold p-4 text-gray-700">
+      <h2 className="text-lg font-semibold py-2 text-gray-700">
         Recently I&apos;m listening to 🎸
       </h2>
 
