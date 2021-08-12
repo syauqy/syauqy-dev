@@ -1,32 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-
-const USER_TOP_ARTIST_ENDPOINT = "https://api.spotify.com/v1/me/top/artists";
+import { USER_TOP_ARTIST_ENDPOINT, spotifyProps } from "~/lib/spotify";
 
 export default function SpotifyGetArtist() {
   const [token, setToken] = useState("");
-  const [data, setData] = useState({});
+  const [data, setData] = useState<spotifyProps>({});
 
+  const artist = data;
   console.log(token);
 
-  const getTopArtists = () => {
-    getSpotifyToken();
-    axios
-      .get(USER_TOP_ARTIST_ENDPOINT, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        params: {
-          time_range: "short_term",
-          limit: 10,
-        },
-      })
-      .then((res) => {
-        setData(res.data);
-      })
-      .catch((error) => console.log(error.response.data));
-  };
-
+  //get spotify token from airtable
   async function getSpotifyToken() {
     axios
       .get(
@@ -43,9 +26,30 @@ export default function SpotifyGetArtist() {
       .catch((error) => console.log(error));
   }
 
-  function saveTopArtists(data) {
-    getTopArtists();
+  //request top artists data from spotify
+  const getTopArtists = () => {
+    getSpotifyToken();
+    axios
+      .get(USER_TOP_ARTIST_ENDPOINT, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        params: {
+          time_range: "short_term",
+          limit: 10,
+        },
+      })
+      .then((res) => {
+        console.log("dapet data artist", res.data);
+        setData(res.data);
+      })
+      .catch((error) => console.log(error.response.data));
+  };
 
+  //save new top artists list to airtable -> for main components update
+  function saveTopArtists(data: spotifyProps) {
+    getTopArtists();
+    console.log("data spotify", data);
     axios({
       method: "post",
       headers: {
@@ -53,12 +57,23 @@ export default function SpotifyGetArtist() {
         "Content-Type": "application/json",
       },
       url: `${process.env.NEXT_PUBLIC_AIRTABLE_URI}/spotify_artist`,
-      data: generateRecords(data),
+      data: {
+        records: data?.items
+          ? data.items.map((artist) => ({
+              fields: {
+                name: artist.name,
+                url: artist.external_urls.spotify,
+                img_url: artist.images[1].url,
+              },
+            }))
+          : {},
+      },
     });
   }
 
-  const generateRecords = (data) => {
-    console.log(data);
+  //generate artist data records for airtable post
+  const generateRecords = (data: spotifyProps) => {
+    // console.log('data spotify',data);
     const records = {
       records: data?.items
         ? data.items.map((artist) => ({
@@ -78,7 +93,6 @@ export default function SpotifyGetArtist() {
     getSpotifyToken();
   }, []);
   console.log(data);
-  console.log(generateRecords(data));
 
   return (
     <div>

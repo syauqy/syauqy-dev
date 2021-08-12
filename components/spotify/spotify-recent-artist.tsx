@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
+import { ArtistProps } from "~/lib/spotify";
 import Image from "next/image";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
-import clsx from "clsx";
 
 export default function SpotifyRecentArtist() {
-  //   let artists = {};
-  const [artists, setArtists] = useState({});
+  const [artists, setArtists] = useState<ArtistProps | undefined>(undefined);
 
-  function showTopArtists() {
-    axios
+  async function showTopArtists() {
+    await axios
       .get(
         `${process.env.NEXT_PUBLIC_AIRTABLE_URI}/spotify_artist?&sort%5B0%5D%5Bfield%5D=no&sort%5B0%5D%5Bdirection%5D=desc`,
         {
@@ -28,21 +27,22 @@ export default function SpotifyRecentArtist() {
       })
       .catch((error) => console.log(error));
   }
-
   useEffect(() => {
     showTopArtists();
   }, []);
 
+  console.log(artists);
+
   return (
     <div className="p-4 pb-6 w-full bg-white bg-opacity-50 shadow-md rounded-md">
-      <h2 className="text-center p-2 text-gray-700">
-        Recently I'm listening to 🎸
+      <h2 className="text-lg font-semibold p-4 text-gray-700">
+        Recently I&apos;m listening to 🎸
       </h2>
 
-      {artists?.records ? (
+      {artists ? (
         <div className="flex flex-wrap justify-center">
           {artists.records.map((artist, i: number) => (
-            <div key={i} className="p-2 ">
+            <div key={i} className="p-2">
               <div className="flex-shrink-0 transform hover:scale-110 hover:rotate-3">
                 <Tippy
                   className="rounded-md shadow-lg p-1 bg-gray-800 text-white"
