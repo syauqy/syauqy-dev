@@ -1,9 +1,13 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import axios from "axios";
+import { PocketArticles } from "~/lib/pocket";
 
 export default function PocketRecentArticles() {
-  const [articles, getArticles] = useState({});
+  const [articles, getArticles] = useState<PocketArticles>(
+    {} as PocketArticles
+  );
 
   function showArticles() {
     axios
@@ -28,7 +32,7 @@ export default function PocketRecentArticles() {
     showArticles();
   }, []);
   return (
-    <div className="p-4 pb-6 w-full bg-white bg-opacity-50 shadow-md rounded-md">
+    <div className="p-4 pb-6 w-full bg-white bg-opacity-50 rounded-md">
       <h2 className="text-lg font-semibold py-2 text-gray-700">
         Recent reads 🗞️
       </h2>
@@ -56,22 +60,11 @@ export default function PocketRecentArticles() {
               </div>
               <div>
                 <p className="text-gray-500 text-sm">
-                  <Link
-                    href={
-                      article.fields.author_url != "none"
-                        ? article.fields.author_url
-                        : "#"
-                    }
-                    passHref
-                  >
-                    <a target="_blank" rel="nofollow noopener noreferrer">
-                      {article.fields.author_name === "none" || "email"
-                        ? ""
-                        : article.fields.author_name + " - "}
-                    </a>
-                  </Link>
+                  {article.fields.author_name !== ("none" || undefined)
+                    ? article.fields.author_name + " - "
+                    : ""}
                   <span>
-                    {article.fields.read_time != 0
+                    {article.fields.read_time !== undefined
                       ? article.fields.read_time + " min"
                       : ""}
                   </span>

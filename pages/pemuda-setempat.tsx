@@ -1,33 +1,17 @@
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
+import React from "react";
 import { NextSeo } from "next-seo";
 import { Page } from "~/components/layouts/page";
 import { PageContent } from "~/components/layouts/page-content";
 import { Container } from "~/components/layouts/container";
 import PocketRecentArticles from "~/components/pocket/pocket-recent-articles";
+import { recordPocketArticles } from "~/lib/pocket";
 import axios from "axios";
 import router from "next/router";
-// import getPocket from "pocket-api";
 
 const meta = {
   title: `Syauqy Aziz`,
   description: `Product manager and web developer living in Yogyakarta, Indonesia. Curently building web and mobile software at Jala`,
 };
-
-// function getPocketToken() {
-//   axios.get(
-//     `${process.env.NEXT_PUBLIC_AIRTABLE_URI}/pocket_token/recFdgl3BgXQEzUFX`,
-//     {
-//       headers: {
-//         Authorization: `Bearer ${process.env.NEXT_PUBLIC_AIRTABLE_TOKEN}`,
-//       },
-//     }
-//   );
-//   //   .then((res) => {
-//   //     setArtists(res.data);
-//   //   })
-//   //   .catch((error) => console.log(error));
-// }
 
 export default function PemudaSetempat() {
   async function getRequestToken() {
@@ -88,52 +72,10 @@ export default function PemudaSetempat() {
       )}`
     );
     const pocket = await response.json();
+    console.log("pocket articles", pocket.list);
     recordPocketArticles(pocket.list);
     // getArticles(pocket.list);
   }
-
-  function recordPocketArticles(pocket) {
-    axios({
-      method: "post",
-      headers: {
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_AIRTABLE_TOKEN}`,
-        "Content-Type": "application/json",
-      },
-      url: `${process.env.NEXT_PUBLIC_AIRTABLE_URI}/pocket_articles`,
-      data: generateRecords(pocket),
-    });
-  }
-
-  const generateRecords = (articles) => {
-    console.log(articles);
-    const records = {
-      records: articles
-        ? Object.keys(articles).map((article) => ({
-            fields: {
-              title: articles[article].resolved_title,
-              img_url: articles[article].top_image_url,
-              url: articles[article].resolved_url,
-              read_time:
-                articles[article].time_to_read !== "0"
-                  ? articles[article].time_to_read
-                  : "0",
-              author_name: articles[article].authors
-                ? Object.keys(articles[article].authors).map(
-                    (author) => articles[article].authors[author].name
-                  )[0]
-                : "none",
-              author_url: articles[article].authors
-                ? Object.keys(articles[article].authors).map(
-                    (author) => articles[article].authors[author].url
-                  )[0]
-                : "none",
-            },
-          }))
-        : {},
-    };
-    console.log("generate", records);
-    return records;
-  };
 
   return (
     <Page>
