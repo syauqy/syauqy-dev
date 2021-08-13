@@ -1,12 +1,29 @@
 import axios from "axios";
+import _ from "lodash";
 
 export type pocketProps = {
   top_image_url?: string;
-  time_to_read?: string | number;
-  resolve_title?: string;
+  time_to_read?: number;
+  resolved_title?: string;
+  resolved_url?: string;
   authors?: {
     name: string;
     url: string;
+  };
+};
+
+export type articleProps = {
+  article: {
+    top_image_url?: string;
+    time_to_read?: number;
+    resolved_title?: string;
+    resolved_url?: string;
+    authors?: {
+      author: {
+        name: string;
+        url: string;
+      };
+    };
   };
 };
 
@@ -25,7 +42,7 @@ type PocketRecords = {
   };
 };
 
-export function recordPocketArticles(pocket: pocketProps) {
+export function recordPocketArticles(pocket: articleProps) {
   axios({
     method: "post",
     headers: {
@@ -35,29 +52,38 @@ export function recordPocketArticles(pocket: pocketProps) {
     url: `${process.env.NEXT_PUBLIC_AIRTABLE_URI}/pocket_articles`,
     data: generateRecords(pocket),
   });
+  // generateRecords(pocket);
 }
 
-const generateRecords = (articles) => {
+const generateRecords = (articles: articleProps) => {
   const records = {
     records: articles
-      ? Object.keys(articles).map((article) => ({
-          fields: {
-            title: articles[article].resolved_title,
-            img_url: articles[article].top_image_url,
-            url: articles[article].resolved_url,
-            read_time:
-              articles[article].time_to_read !== "0" || undefined
-                ? articles[article].time_to_read
-                : 0,
-            author_name: articles[article].authors
-              ? Object.keys(articles[article].authors).map(
-                  (author) => articles[article].authors[author].name
-                )[0]
-              : "none",
-          },
-        }))
+      ? _.values(
+          _.mapValues(articles, function (article) {
+            return {
+              fields: {
+                title: article.resolved_title,
+                img_url: article.top_image_url,
+                url: article.resolved_url,
+                read_time:
+                  article.time_to_read !== undefined ? article.time_to_read : 0,
+                author_name: article.authors
+                  ? _.join(
+                      _.values(
+                        _.mapValues(article.authors, function (author) {
+                          return author.name;
+                        })
+                      ),
+                      ", "
+                    )
+                  : "none",
+              },
+            };
+          })
+        )
       : {},
   };
-  //   console.log("generate", records);
+
+  console.log("generate", records);
   return records;
 };

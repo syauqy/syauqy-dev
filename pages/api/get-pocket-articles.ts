@@ -22,6 +22,5 @@ export default async function PocketGetArticles(
       sort: "newest",
     },
   });
-  // console.log(request_token);
   res.status(200).json(articles.data);
 }

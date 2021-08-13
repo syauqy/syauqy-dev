@@ -36,7 +36,7 @@ export default function SpotifyRecentArtist() {
   return (
     <div className="p-4 pb-6 w-full bg-white bg-opacity-50 rounded-md">
       <h2 className="text-lg font-semibold py-2 text-gray-700">
-        Recently I&apos;m listening to 🎸
+        🎸 Recently I&apos;m listening to
       </h2>
 
       {artists ? (
@@ -59,8 +59,8 @@ export default function SpotifyRecentArtist() {
                           className="object-cover shadow-md rounded-full"
                           src={artist.fields.img_url}
                           alt={artist.fields.name}
-                          width={80}
-                          height={80}
+                          width={60}
+                          height={60}
                         />
                       </a>
                     </Link>

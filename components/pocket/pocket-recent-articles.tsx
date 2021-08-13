@@ -34,13 +34,13 @@ export default function PocketRecentArticles() {
   return (
     <div className="p-4 pb-6 w-full bg-white bg-opacity-50 rounded-md">
       <h2 className="text-lg font-semibold py-2 text-gray-700">
-        Recent reads 🗞️
+        🗞️ Recent reads
       </h2>
       <div className="flex flex-col space-y-4">
         {articles?.records ? (
           articles?.records.map((article, i) => (
             <div className="space-y-2 py-2" key={i}>
-              <h2 className="text-xl font-semibold">
+              <h2 className="text-md font-semibold">
                 <Link href={article.fields.url} passHref>
                   <a target="_blank" rel="nofollow noopener noreferrer">
                     {article.fields.title}
@@ -64,7 +64,7 @@ export default function PocketRecentArticles() {
                     ? article.fields.author_name + " - "
                     : ""}
                   <span>
-                    {article.fields.read_time !== undefined
+                    {article.fields.read_time !== 0
                       ? article.fields.read_time + " min"
                       : ""}
                   </span>

@@ -1,12 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
 
-type Data = {
-  berhasil: string;
-  consumer_key?: string;
-  redirect_uri?: string;
-};
-
 const POCKET_API_TOKEN_URL = `https://getpocket.com/v3/oauth/authorize`;
 
 export default async function PocketAccessToken(
@@ -26,8 +20,6 @@ export default async function PocketAccessToken(
         code: req.query.code,
       },
     });
-    // console.log(access_token);
     res.status(200).json(access_token.data);
   }
-  //   res.status(200).json(req.query);
 }
