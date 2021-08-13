@@ -27,7 +27,7 @@ export default function PocketRecentArticles() {
       })
       .catch((error) => console.log(error));
   }
-  console.log(articles);
+  // console.log(articles);
   useEffect(() => {
     showArticles();
   }, []);

@@ -31,7 +31,7 @@ export default function SpotifyRecentArtist() {
     showTopArtists();
   }, []);
 
-  console.log(artists);
+  // console.log(artists);
 
   return (
     <div className="p-4 pb-6 w-full bg-white bg-opacity-50 rounded-md">

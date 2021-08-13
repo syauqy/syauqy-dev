@@ -3,6 +3,8 @@ import axios from "axios";
 export const USER_TOP_ARTIST_ENDPOINT =
   "https://api.spotify.com/v1/me/top/artists";
 
+export const SPOTIFY_AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID}&redirect_uri=${process.env.NEXT_PUBLIC_SPOTIFY_REDIRECT_URI}&scope=user-top-read%20user-read-recently-played&response_type=token`;
+
 export type ArtistProps = {
   readonly records: ArtistRecords[];
 };

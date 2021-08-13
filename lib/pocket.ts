@@ -1,18 +1,7 @@
 import axios from "axios";
 import _ from "lodash";
 
-export type pocketProps = {
-  top_image_url?: string;
-  time_to_read?: number;
-  resolved_title?: string;
-  resolved_url?: string;
-  authors?: {
-    name: string;
-    url: string;
-  };
-};
-
-export type articleProps = {
+export type ArticleProps = {
   article: {
     top_image_url?: string;
     time_to_read?: number;
@@ -42,7 +31,7 @@ type PocketRecords = {
   };
 };
 
-export function recordPocketArticles(pocket: articleProps) {
+export function recordPocketArticles(pocket: ArticleProps) {
   axios({
     method: "post",
     headers: {
@@ -55,7 +44,7 @@ export function recordPocketArticles(pocket: articleProps) {
   // generateRecords(pocket);
 }
 
-const generateRecords = (articles: articleProps) => {
+const generateRecords = (articles: ArticleProps) => {
   const records = {
     records: articles
       ? _.values(
