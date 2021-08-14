@@ -27,7 +27,7 @@ export default function HomeHeadSection() {
               <AnchorText
                 href="https://github.com/syauqy"
                 hoverColor="hover:bg-blue-500 hover:text-white"
-                rel=""
+                rel="nofollow noopener noreferrer"
                 target="_blank"
               >
                 spare-time coder
@@ -41,7 +41,7 @@ export default function HomeHeadSection() {
           <AnchorText
             href="https://jala.tech"
             hoverColor="hover:bg-blue-500 hover:text-white"
-            rel=""
+            rel="nofollow noopener noreferrer"
             target="_blank"
           >
             Jala

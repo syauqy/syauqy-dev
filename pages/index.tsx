@@ -6,6 +6,7 @@ import { Container } from "~/components/layouts/container";
 import PocketRecentArticles from "~/components/pocket/pocket-recent-articles";
 import SpotifyRecentArtist from "~/components/spotify/spotify-recent-artist";
 import HomeHeadSection from "~/components/home/home-head-section";
+import HomeProjectsSection from "~/components/home/home-projects-section";
 
 const meta = {
   title: `Syauqy Aziz`,
@@ -24,12 +25,7 @@ export default function Home() {
       <PageContent>
         <Container className="space-y-4">
           <HomeHeadSection />
-          <div className="head p-5 pb-6 w-full bg-white bg-opacity-50 rounded-md shadow-md">
-            <h2 className="text-lg font-semibold pb-4 text-gray-700">
-              💻 Recent projects and contributions
-            </h2>
-            <div className="space-y-3 text-gray-700"></div>
-          </div>
+          <HomeProjectsSection />
           <SpotifyRecentArtist />
           <PocketRecentArticles />
         </Container>
