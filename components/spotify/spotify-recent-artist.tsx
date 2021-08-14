@@ -4,7 +4,6 @@ import Link from "next/link";
 import { ArtistProps } from "~/lib/spotify";
 import Image from "next/image";
 import Tippy from "@tippyjs/react";
-import clsx from "clsx";
 import _ from "lodash";
 import "tippy.js/dist/tippy.css";
 
@@ -41,7 +40,7 @@ export default function SpotifyRecentArtist() {
       </h2>
 
       {artists ? (
-        <div className="grid grid-cols-5 gap-4 justify-center">
+        <div className="grid grid-cols-5 gap-4">
           {artists.records.map((artist, i: number) => (
             <div key={i}>
               <div className="flex-shrink-0 transform hover:scale-110 hover:rotate-3">
