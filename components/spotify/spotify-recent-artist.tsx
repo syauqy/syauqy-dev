@@ -59,8 +59,8 @@ export default function SpotifyRecentArtist() {
                           className="object-cover shadow-md rounded-full"
                           src={artist.fields.img_url}
                           alt={artist.fields.name}
-                          width={60}
-                          height={60}
+                          width={80}
+                          height={80}
                         />
                       </a>
                     </Link>

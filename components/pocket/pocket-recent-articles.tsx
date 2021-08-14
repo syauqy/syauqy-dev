@@ -33,43 +33,45 @@ export default function PocketRecentArticles() {
   }, []);
   return (
     <div className="p-4 pb-6 w-full bg-white bg-opacity-50 rounded-md">
-      <h2 className="text-lg font-semibold py-2 text-gray-700">
+      <h2 className="text-lg font-semibold py-4 text-gray-700">
         🗞️ Recent reads
       </h2>
       <div className="flex flex-col space-y-4">
         {articles?.records ? (
           articles?.records.map((article, i) => (
-            <div className="space-y-2 py-2" key={i}>
-              <h2 className="text-md font-semibold">
-                <Link href={article.fields.url} passHref>
-                  <a target="_blank" rel="nofollow noopener noreferrer">
-                    {article.fields.title}
-                  </a>
-                </Link>
-              </h2>
-              <div className="flex-shrink-0">
-                <Link href={article.fields.url} passHref>
-                  <a target="_blank" rel="nofollow noopener noreferrer">
+            <div key={i} className="border border-gray-300 rounded-md">
+              <Link href={article.fields.url} passHref>
+                <a
+                  target="_blank"
+                  rel="nofollow noopener noreferrer"
+                  className="grid grid-cols-3 md:grid-cols-2 gap-4 hover:bg-gray-50"
+                >
+                  <div className="space-y-2 p-4 col-span-2 md:col-span-1">
+                    <h2 className="text-md text-gray-700 font-medium">
+                      {article.fields.title}
+                    </h2>
+                    <div className="py-2">
+                      <p className="text-gray-500 text-sm truncate font-light">
+                        {article.fields.author_name !== ("none" || undefined)
+                          ? article.fields.author_name
+                          : article.fields.url}
+                      </p>
+                      <p className="text-gray-500 text-sm font-light">
+                        {article.fields.read_time !== 0
+                          ? article.fields.read_time + " min read"
+                          : ""}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex-shrink-0">
                     <img
-                      className="object-cover w-full h-48"
+                      className="object-cover w-full h-full"
                       src={article.fields.img_url}
                       alt={article.fields.title}
                     />
-                  </a>
-                </Link>
-              </div>
-              <div>
-                <p className="text-gray-500 text-sm">
-                  {article.fields.author_name !== ("none" || undefined)
-                    ? article.fields.author_name + " - "
-                    : ""}
-                  <span>
-                    {article.fields.read_time !== 0
-                      ? article.fields.read_time + " min"
-                      : ""}
-                  </span>
-                </p>
-              </div>
+                  </div>
+                </a>
+              </Link>
             </div>
           ))
         ) : (
