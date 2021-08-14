@@ -41,15 +41,15 @@ export default function PocketRecentArticles() {
           articles?.records.map((article, i) => (
             <div
               key={i}
-              className="border-gray-300 rounded-md border overflow-hidden"
+              className="border-gray-300 rounded-md border hover:shadow-md hover:bg-gray-100"
             >
               <Link href={article.fields.url} passHref>
                 <a
                   target="_blank"
                   rel="nofollow noopener noreferrer"
-                  className="grid grid-cols-3 md:grid-cols-2 gap-2 hover:bg-gray-50"
+                  className="grid grid-cols-3 gap-1 overflow-hidden"
                 >
-                  <div className="space-y-2 p-4 col-span-2 md:col-span-1">
+                  <div className="space-y-2 p-4 col-span-2">
                     <h2 className="text-md text-gray-700 font-medium max-h-12 truncate">
                       {article.fields.title}
                     </h2>

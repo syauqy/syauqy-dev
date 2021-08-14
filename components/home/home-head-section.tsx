@@ -13,8 +13,10 @@ export default function HomeHeadSection() {
               className="object-center rounded-full"
               src={profileHead}
               alt="syauqy"
+              placeholder="blur"
               width={80}
               height={80}
+              quality={100}
             />
           </div>
 

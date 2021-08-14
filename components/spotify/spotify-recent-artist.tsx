@@ -43,7 +43,7 @@ export default function SpotifyRecentArtist() {
         <div className="grid grid-cols-5 gap-4">
           {artists.records.map((artist, i: number) => (
             <div key={i}>
-              <div className="flex-shrink-0 transform hover:scale-110 hover:rotate-3">
+              <div className="flex-shrink-0 transform hover:scale-110 hover:rotate-3 ">
                 <Tippy
                   className="rounded-md shadow-lg p-1 bg-gray-800 text-white"
                   content={<span>{artist.fields.name}</span>}
@@ -61,6 +61,7 @@ export default function SpotifyRecentArtist() {
                           alt={artist.fields.name}
                           width={100}
                           height={100}
+                          quality={90}
                         />
                       </a>
                     </Link>
