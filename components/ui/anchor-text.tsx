@@ -14,7 +14,12 @@ export const AnchorText = React.forwardRef<HTMLAnchorElement, AnchorProps>(
     <>
       {" "}
       <a
-        className={clsx("px-1 rounded", className, bgColor, hoverColor)}
+        className={clsx(
+          "px-1 rounded bg-gray-300",
+          className,
+          bgColor,
+          hoverColor
+        )}
         ref={ref}
         href={href}
         target={target}
