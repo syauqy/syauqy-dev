@@ -39,7 +39,7 @@ export default function PocketRecentArticles() {
       <div className="flex flex-col space-y-4">
         {articles?.records ? (
           articles?.records.map((article, i) => (
-            <div key={i} className="border border-gray-300 rounded-md">
+            <div key={i} className="border-gray-300 rounded-md border">
               <Link href={article.fields.url} passHref>
                 <a
                   target="_blank"
@@ -47,7 +47,7 @@ export default function PocketRecentArticles() {
                   className="grid grid-cols-3 md:grid-cols-2 gap-4 hover:bg-gray-50"
                 >
                   <div className="space-y-2 p-4 col-span-2 md:col-span-1">
-                    <h2 className="text-md text-gray-700 font-medium">
+                    <h2 className="text-md text-gray-700 font-medium max-h-12 overflow-ellipsis overflow-hidden">
                       {article.fields.title}
                     </h2>
                     <div className="py-2">

@@ -4,11 +4,12 @@ import Link from "next/link";
 import { ArtistProps } from "~/lib/spotify";
 import Image from "next/image";
 import Tippy from "@tippyjs/react";
+import clsx from "clsx";
+import _ from "lodash";
 import "tippy.js/dist/tippy.css";
 
 export default function SpotifyRecentArtist() {
   const [artists, setArtists] = useState<ArtistProps | undefined>(undefined);
-
   async function showTopArtists() {
     await axios
       .get(
@@ -35,14 +36,14 @@ export default function SpotifyRecentArtist() {
 
   return (
     <div className="p-4 pb-6 w-full bg-white bg-opacity-50 rounded-md">
-      <h2 className="text-lg font-semibold py-2 text-gray-700">
+      <h2 className="text-lg font-semibold py-4 text-gray-700">
         🎸 Recently I&apos;m listening to
       </h2>
 
       {artists ? (
-        <div className="flex flex-wrap justify-center">
+        <div className="grid grid-cols-5 gap-4 justify-center">
           {artists.records.map((artist, i: number) => (
-            <div key={i} className="p-2">
+            <div key={i}>
               <div className="flex-shrink-0 transform hover:scale-110 hover:rotate-3">
                 <Tippy
                   className="rounded-md shadow-lg p-1 bg-gray-800 text-white"
@@ -59,8 +60,8 @@ export default function SpotifyRecentArtist() {
                           className="object-cover shadow-md rounded-full"
                           src={artist.fields.img_url}
                           alt={artist.fields.name}
-                          width={80}
-                          height={80}
+                          width={100}
+                          height={100}
                         />
                       </a>
                     </Link>
