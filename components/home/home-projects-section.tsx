@@ -2,62 +2,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Link from "next/link";
 import clsx from "clsx";
-import _ from "lodash";
+import { ProjectProps, stackClass } from "~/lib/projects";
 
 export default function HomeProjectsSection() {
-  const [projects, setProjects] = useState({});
-
-  const stackColors = [
-    {
-      stack_name: "Next.js",
-      class: "bg-gray-100 text-gray-600",
-    },
-    {
-      stack_name: "Typescript",
-      class: "bg-blue-50 text-blue-500",
-    },
-    {
-      stack_name: "Gatsby",
-      class: "bg-purple-50 text-purple-500",
-    },
-    {
-      stack_name: "Chart.js",
-      class: "bg-pink-50 text-pink-500 ",
-    },
-    {
-      stack_name: "Supabase",
-      class: "bg-green-50 text-brand-supabase",
-    },
-    {
-      stack_name: "Tensorflowjs",
-      class: "bg-yellow-50 text-yellow-500",
-    },
-    {
-      stack_name: "Mapbox",
-      class: "bg-blue-50 text-blue-700",
-    },
-    {
-      stack_name: "Jala API",
-      class: "bg-blue-50 text-brand-jala",
-    },
-    {
-      stack_name: "Chakra UI",
-      class: "bg-green-50 text-brand-chakra",
-    },
-    {
-      stack_name: "Netlify CMS",
-      class: "bg-green-50 text-brand-netlify",
-    },
-    {
-      stack_name: "Tailwind CSS",
-      class: "bg-green-50 text-brand-tailwind",
-    },
-  ];
-
-  const stackClass = (stack: string) => {
-    const classes = _.find(stackColors, { stack_name: stack });
-    return ["text-xs p-1 rounded", classes?.class];
-  };
+  const [projects, setProjects] = useState<ProjectProps>({} as ProjectProps);
+  console.log(projects);
 
   function showProjects() {
     axios
@@ -127,7 +76,7 @@ export default function HomeProjectsSection() {
                     ""
                   )}
                 </div>
-                <div className="flex flex-wrap space-x-2">
+                <div className="flex flex-wrap">
                   {project.fields.stacks.map((stack, i: number) => (
                     <div key={i} className={clsx(stackClass(stack))}>
                       {stack}
