@@ -3,6 +3,7 @@ import { NextSeo } from "next-seo";
 import { Page } from "~/components/layouts/page";
 import { PageContent } from "~/components/layouts/page-content";
 import { Container } from "~/components/layouts/container";
+import { Footer } from "~/components/footer";
 import PocketRecentArticles from "~/components/pocket/pocket-recent-articles";
 import SpotifyRecentArtist from "~/components/spotify/spotify-recent-artist";
 import HomeHeadSection from "~/components/home/home-head-section";
@@ -28,6 +29,7 @@ export default function Home() {
           <HomeProjectsSection />
           <SpotifyRecentArtist />
           <PocketRecentArticles />
+          <Footer />
         </Container>
       </PageContent>
     </Page>

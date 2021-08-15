@@ -16,7 +16,7 @@ export type ProjectRecords = {
   };
 };
 
-const stackColors = [
+export const stackColors = [
   {
     stack_name: "Next.js",
     class: "bg-gray-100 text-gray-600",
@@ -65,5 +65,5 @@ const stackColors = [
 
 export const stackClass = (stack: string) => {
   const classes = _.find(stackColors, { stack_name: stack });
-  return ["text-xs p-1 rounded mr-2 mb-1", classes?.class];
+  return [classes?.class, "text-xs p-1 rounded mr-2 mb-1"];
 };

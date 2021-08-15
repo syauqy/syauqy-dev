@@ -3,7 +3,7 @@ import axios from "axios";
 import clsx from "clsx";
 import { ProjectProps, stackClass } from "~/lib/projects";
 import { ArrowRightIcon } from "@heroicons/react/solid";
-import { GhostAnchorText } from "../ui/ghost-anchor-text";
+import { GhostAnchorText } from "~/components/ui/ghost-anchor-text";
 
 export default function HomeProjectsSection() {
   const [projects, setProjects] = useState<ProjectProps>({} as ProjectProps);
