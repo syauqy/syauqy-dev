@@ -17,7 +17,7 @@ export function Footer() {
           >
             @syauqy
           </AnchorText>
-          , a Product Manager and spare-time coder from Indonesia 🇮🇩 .
+          , a Product Manager and spare-time coder from Indonesia 🇮🇩
         </p>
         <p className="text-gray-700">
           If you are interested in working with me, drop me an email at

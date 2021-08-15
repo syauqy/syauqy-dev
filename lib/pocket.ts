@@ -33,6 +33,20 @@ type PocketRecords = {
   };
 };
 
+export type PocketList = {
+  readonly excerpt?: string;
+  readonly resolved_title?: string;
+  readonly resolved_url: string;
+  readonly top_image_url: string;
+  readonly item_id?: string;
+  readonly authors?: PocketAuthors[];
+};
+
+export type PocketAuthors = {
+  readonly item_id?: string;
+  readonly name?: string;
+};
+
 export function recordPocketArticles(pocket: ArticleProps) {
   axios({
     method: "post",

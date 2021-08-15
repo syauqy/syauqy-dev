@@ -55,15 +55,11 @@ export default function PocketGetArticles() {
 
   async function getPocketArticles() {
     const response = await fetch(
-      `${
-        process.env.NEXT_PUBLIC_HOST
-      }/api/get-pocket-articles?access_token=${localStorage.getItem(
-        "pocketAccessToken"
-      )}`
+      `${process.env.NEXT_PUBLIC_HOST}/api/get-pocket-articles?access_token=${process.env.NEXT_PUBLIC_POCKET_ACCESS_TOKEN}`
     );
     const pocket = await response.json();
     console.log("pocket articles", pocket.list);
-    recordPocketArticles(pocket.list);
+    // recordPocketArticles(pocket.list);
     // getArticles(pocket.list);
   }
   return (
