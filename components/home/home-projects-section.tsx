@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Link from "next/link";
 import clsx from "clsx";
 import { ProjectProps, stackClass } from "~/lib/projects";
+import { ArrowRightIcon } from "@heroicons/react/solid";
+import { GhostAnchorText } from "../ui/ghost-anchor-text";
 
 export default function HomeProjectsSection() {
   const [projects, setProjects] = useState<ProjectProps>({} as ProjectProps);
-  console.log(projects);
 
   function showProjects() {
     axios
@@ -41,37 +41,32 @@ export default function HomeProjectsSection() {
             >
               <div className="space-y-3 p-4">
                 <div className="space-y-1">
-                  <Link href={project.fields.main_url} passHref>
-                    <a target="_blank" rel="nofollow noopener noreferrer">
-                      <h2 className="text-md text-gray-700 font-semibold truncate">
-                        {project.fields.name}
-                      </h2>
-                    </a>
-                  </Link>
+                  <GhostAnchorText
+                    className="text-md text-gray-700 font-semibold truncate"
+                    href={project.fields.main_url}
+                    hoverColor="hover:bg-blue-500 hover:text-white"
+                    target="_blank"
+                    rel="nofollow noopener noreferrer"
+                  >
+                    {project.fields.name}
+                  </GhostAnchorText>
                   <p className="text-gray-500 text-sm font-light">
                     {project.fields.description}
                   </p>
                 </div>
                 <div className="">
                   {project.fields.repo_url ? (
-                    <Link
+                    <GhostAnchorText
                       href={
                         project.fields.repo_url ? project.fields.repo_url : ""
                       }
-                      passHref
+                      target="_blank"
+                      className="text-blue-400 text-sm font-medium"
+                      hoverColor="hover:bg-blue-500 hover:text-white"
+                      rel="nofollow noopener noreferrer"
                     >
-                      <a
-                        target="_blank"
-                        rel="nofollow noopener noreferrer"
-                        className={clsx(
-                          project.fields.repo_url ? "" : "cursor-default"
-                        )}
-                      >
-                        <p className="text-blue-400 text-sm font-medium">
-                          {project.fields.repo_title}
-                        </p>
-                      </a>
-                    </Link>
+                      {project.fields.repo_title}
+                    </GhostAnchorText>
                   ) : (
                     ""
                   )}
@@ -96,17 +91,18 @@ export default function HomeProjectsSection() {
             </div>
           </div>
         )}
-        <p className="text-blue-400 text-light">
-          View more on{" "}
-          <a
-            className="font-medium"
+        <div className="text-blue-400 text-light flex">
+          <GhostAnchorText
+            className="flex"
+            hoverColor="hover:bg-blue-500 hover:text-white"
             href="https://github.com/syauqy"
             target="_blank"
             rel="nofollow noopener noreferrer"
           >
-            GitHub
-          </a>
-        </p>
+            View more on <b className="mx-1"> GitHub</b>
+            <ArrowRightIcon className="h-4 w-4 my-1" />
+          </GhostAnchorText>
+        </div>
       </div>
     </div>
   );
