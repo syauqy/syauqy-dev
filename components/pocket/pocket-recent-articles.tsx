@@ -18,7 +18,7 @@ export default function PocketRecentArticles() {
             Authorization: `Bearer ${process.env.NEXT_PUBLIC_AIRTABLE_TOKEN}`,
           },
           params: {
-            maxRecords: 5,
+            maxRecords: 3,
           },
         }
       )
@@ -50,19 +50,19 @@ export default function PocketRecentArticles() {
                   className="grid grid-cols-3 gap-1 overflow-hidden"
                 >
                   <div className="space-y-2 p-4 col-span-2">
-                    <h2 className="text-md text-gray-700 font-medium max-h-12 truncate">
-                      {article.fields.title}
-                    </h2>
-                    <div className="py-2">
+                    <div className="">
+                      <h2 className="text-md text-gray-700 font-medium max-h-12 truncate">
+                        {article.fields.title}
+                      </h2>
+                      <p className="text-gray-400 text-xs font-light max-h-12 overflow-y-auto">
+                        {article.fields.excerpt ? article.fields.excerpt : ""}
+                      </p>
+                    </div>
+                    <div className="">
                       <p className="text-gray-500 text-sm truncate font-light">
                         {article.fields.author_name !== ("none" || undefined)
                           ? article.fields.author_name
                           : article.fields.url}
-                      </p>
-                      <p className="text-gray-500 text-sm font-light">
-                        {article.fields.read_time !== 0
-                          ? article.fields.read_time + " min read"
-                          : ""}
                       </p>
                     </div>
                   </div>

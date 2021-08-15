@@ -65,5 +65,5 @@ const stackColors = [
 
 export const stackClass = (stack: string) => {
   const classes = _.find(stackColors, { stack_name: stack });
-  return ["text-xs p-1 rounded mr-2 mb-2", classes?.class];
+  return ["text-xs p-1 rounded mr-2 mb-1", classes?.class];
 };

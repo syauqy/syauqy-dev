@@ -7,6 +7,7 @@ export type ArticleProps = {
     time_to_read?: number;
     resolved_title?: string;
     resolved_url?: string;
+    excerpt?: string;
     authors?: {
       author: {
         name: string;
@@ -28,6 +29,7 @@ type PocketRecords = {
     readonly read_time?: number;
     readonly title?: string;
     readonly url: string;
+    readonly excerpt: string;
   };
 };
 
@@ -54,6 +56,7 @@ const generateRecords = (articles: ArticleProps) => {
                 title: article.resolved_title,
                 img_url: article.top_image_url,
                 url: article.resolved_url,
+                excerpt: article.excerpt,
                 read_time:
                   article.time_to_read !== undefined ? article.time_to_read : 0,
                 author_name: article.authors

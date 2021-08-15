@@ -96,6 +96,17 @@ export default function HomeProjectsSection() {
             </div>
           </div>
         )}
+        <p className="text-blue-400 text-light">
+          View more on{" "}
+          <a
+            className="font-medium"
+            href="https://github.com/syauqy"
+            target="_blank"
+            rel="nofollow noopener noreferrer"
+          >
+            GitHub
+          </a>
+        </p>
       </div>
     </div>
   );
