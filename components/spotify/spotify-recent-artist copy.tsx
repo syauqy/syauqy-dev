@@ -7,34 +7,17 @@ import Tippy from "@tippyjs/react";
 import _ from "lodash";
 import "tippy.js/dist/tippy.css";
 
-type SpotifyProps = {
-  readonly items: SpotifyArtist[];
-};
-
-type ArtistImages = {
-  readonly height: number;
-  readonly url: string;
-};
-
-type SpotifyArtist = {
-  readonly href: string;
-  readonly name: string;
-  readonly id: string;
-  readonly images: ArtistImages[];
-  readonly external_urls: {
-    readonly spotify: string;
-  };
-};
-
-export default function SpotifyRecentArtist() {
-  const [artists, setArtists] = useState<SpotifyProps>({} as SpotifyProps);
+export default function SpotifyRecentArtist(props) {
+  const [artists, setArtists] = useState<ArtistProps | undefined>(
+    {} as ArtistProps
+  );
 
   async function showTopArtists() {
     const response = await getTopArtists();
     setArtists(response);
   }
 
-  // console.log(props);
+  console.log(props);
   // async function showTopArtists() {
   //   await axios
   //     .get(
@@ -70,7 +53,6 @@ export default function SpotifyRecentArtist() {
       <h2 className="text-lg font-semibold pb-4 text-gray-700">
         🎸 Recently I&apos;m listening to
       </h2>
-      {}
 
       {/* {artists ? (
         <div className="grid grid-cols-5 gap-4">
@@ -113,26 +95,26 @@ export default function SpotifyRecentArtist() {
           <div className="h-20 w-20 bg-gray-400 rounded-full mx-2"></div>
         </div>
       )} */}
-      {artists?.items ? (
+      {artists ? (
         <div className="grid grid-cols-5 gap-4">
-          {artists.items.map((artist, i: number) => (
+          {artists.records.map((artist, i: number) => (
             <div key={i}>
               <div className="flex-shrink-0 transform hover:scale-110 hover:rotate-3 ">
                 <Tippy
                   className="rounded-md shadow-lg p-1 bg-gray-800 text-white"
-                  content={<span>{artist.name}</span>}
+                  content={<span>{artist.fields.name}</span>}
                   delay={100}
                   placement="bottom"
                   arrow={false}
                   offset={[0, 5]}
                 >
                   <div>
-                    <Link href={artist.external_urls.spotify} passHref>
+                    <Link href={artist.fields.url} passHref>
                       <a target="_blank" rel="nofollow noopener noreferrer">
                         <Image
                           className="object-cover shadow-md rounded-full"
-                          src={artist.images[1].url}
-                          alt={artist.name}
+                          src={artist.fields.img_url}
+                          alt={artist.fields.name}
                           width={100}
                           height={100}
                           quality={90}
@@ -156,4 +138,14 @@ export default function SpotifyRecentArtist() {
       )}
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/spotify`);
+  // const { artists } = await response.json();
+  return {
+    props: {
+      response,
+    }, // will be passed to the page component as props
+  };
 }

@@ -18,10 +18,12 @@ export default function PocketRecentArticles() {
   useEffect(() => {
     getPocketArticles();
   }, []);
+
+  console.log(pockets);
   return (
     <div className="p-5 pb-6 w-full bg-white bg-opacity-50 rounded-md shadow-md">
       <h2 className="text-lg font-semibold pb-4 text-gray-700">
-        🗞️ Recent reads
+        🗞️ Recent Pocket reads
       </h2>
       <div className="flex flex-col space-y-4">
         {_.valuesIn(pockets).length ? (
@@ -29,7 +31,7 @@ export default function PocketRecentArticles() {
             _.mapValues(pockets, (pocket: PocketList) => (
               <div
                 key={pocket.item_id}
-                className="border-gray-300 rounded-md border hover:shadow-md hover:bg-gray-100"
+                className="border-gray-300 rounded-md border hover:shadow-md"
               >
                 <Link href={pocket.resolved_url} passHref>
                   <a

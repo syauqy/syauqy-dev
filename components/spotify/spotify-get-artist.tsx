@@ -5,17 +5,27 @@ import {
   USER_TOP_ARTIST_ENDPOINT,
   spotifyProps,
   SPOTIFY_AUTH_URL,
+  recordSpotifyCode,
   getSpotifyParams,
   recordAccessToken,
 } from "~/lib/spotify";
+import querystring from "querystring";
+
+const client_id = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID;
+const client_secret = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET;
+const SPOTIFY_TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
+const refresh_token = process.env.NEXT_PUBLIC_SPOTIFY_REFRESH_TOKEN;
 
 export default function SpotifyGetArtist() {
   const [token, setToken] = useState("");
+  const [code, setCode] = useState("");
   const [data, setData] = useState<spotifyProps>({});
-  console.log(token);
+  const basic = Buffer.from(`${client_id}:${client_secret}`).toString("base64");
 
-  //get spotify token from airtable
-  async function getSpotifyToken() {
+  // console.log(token);
+
+  //get spotify token from airtable - implicit grant
+  async function getSpotifyAirtableToken() {
     axios
       .get(
         `${process.env.NEXT_PUBLIC_AIRTABLE_URI}/spotify_token/recxh8d64XoW8kWTm`,
@@ -31,13 +41,52 @@ export default function SpotifyGetArtist() {
       .catch((error) => console.log(error));
   }
 
+  //get spotify code
+  async function getSpotifyCode() {
+    axios
+      .get(
+        `${process.env.NEXT_PUBLIC_AIRTABLE_URI}/spotify_code/recaGiYzytfvX2bFW`,
+        {
+          headers: {
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_AIRTABLE_TOKEN}`,
+          },
+        }
+      )
+      .then((res) => {
+        setCode(res.data.fields.code);
+      })
+      .catch((error) => console.log(error));
+  }
+
+  //get spotify token
+  const getSpotifyToken = async () => {
+    const response = await axios(SPOTIFY_TOKEN_ENDPOINT, {
+      method: "POST",
+      headers: {
+        Authorization: `Basic ${basic}`,
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      data: querystring.stringify({
+        grant_type: "refresh_token",
+        refresh_token,
+      }),
+    })
+      .then((res) => {
+        console.log(res.data);
+        return res.data.access_token;
+      })
+      .catch((error) => console.log(error.response.data));
+    return response;
+  };
+
   //request top artists data from spotify
-  const getTopArtists = () => {
-    getSpotifyToken();
+  const getTopArtists = async () => {
+    const access_token = await getSpotifyToken();
+    console.log(access_token);
     axios
       .get(USER_TOP_ARTIST_ENDPOINT, {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${access_token}`,
         },
         params: {
           time_range: "short_term",
@@ -85,14 +134,14 @@ export default function SpotifyGetArtist() {
   };
 
   useEffect(() => {
-    if (window.location.hash) {
-      const { access_token } = getSpotifyParams(window.location.hash);
-      // console.log(access_token);
-      recordAccessToken(access_token);
+    if (window.location.search) {
+      const urlSpotifyResponse = new URLSearchParams(window.location.search);
+      const params = Object.fromEntries(urlSpotifyResponse.entries());
+      recordSpotifyCode(params.code);
     }
-    getSpotifyToken();
+    // getSpotifyToken();
   }, []);
-  console.log(data);
+  // console.log(token);
 
   return (
     <div className="flex flex-col space-y-2">
