@@ -9,6 +9,15 @@ module.exports = {
       fontFamily: {
         sans: ["Inter", ...defaultTheme.fontFamily.sans],
       },
+      colors: {
+        brand: {
+          netlify: "#3BB2BB",
+          chakra: "#319795",
+          jala: "#0092ff",
+          supabase: "#65d9a5",
+          tailwind: "#09B6D4",
+        },
+      },
     },
   },
   variants: {
