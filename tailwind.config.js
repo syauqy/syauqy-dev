@@ -18,6 +18,7 @@ module.exports = {
           tailwind: "#09b6d4",
           linkedin: "#0d65c3",
           twitter: "#1c91da",
+          pocket: "#EE4056",
         },
       },
     },

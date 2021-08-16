@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from "react";
+import { ProjectProps, stackColors } from "~/lib/projects";
 import axios from "axios";
 import clsx from "clsx";
-import { ProjectProps, stackClass } from "~/lib/projects";
 import { ArrowRightIcon } from "@heroicons/react/solid";
 import { GhostAnchorText } from "~/components/ui/ghost-anchor-text";
+import _ from "lodash";
+
+const colors = stackColors;
 
 export default function HomeProjectsSection() {
   const [projects, setProjects] = useState<ProjectProps>({} as ProjectProps);
-
+  const stackClass = (stack: string) => {
+    const classes = _.find(colors, { stack_name: stack });
+    return [classes?.class, `text-xs p-1 rounded mr-2 mb-1`];
+  };
   function showProjects() {
     axios
       .get(

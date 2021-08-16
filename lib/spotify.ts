@@ -12,87 +12,24 @@ const SPOTIFY_TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
 const refresh_token = process.env.NEXT_PUBLIC_SPOTIFY_REFRESH_TOKEN;
 const basic = Buffer.from(`${client_id}:${client_secret}`).toString("base64");
 
-export type ArtistProps = {
-  readonly records: ArtistRecords[];
+export type SpotifyProps = {
+  readonly items: SpotifyArtist[];
 };
 
-export type ArtistRecords = {
-  readonly createdTime: string;
-  readonly id: string;
-  readonly fields: {
-    readonly img_url: string;
-    readonly name: string;
-    readonly no: number;
-    readonly url: string;
-  };
-};
-
-export type ArtistFields = {
-  readonly img_url: string;
-  readonly name: string;
-  readonly no: number;
+type ArtistImages = {
+  readonly height: number;
   readonly url: string;
 };
 
-//spotify response types
-export type spotifyProps = {
-  readonly href?: string;
-  readonly limit?: number;
-  readonly next?: string;
-  readonly offset?: number;
-  readonly total?: number;
-  readonly items?: spotifyItems[];
-};
-
-export type spotifyItems = {
+type SpotifyArtist = {
+  readonly href: string;
+  readonly name: string;
+  readonly id: string;
+  readonly images: ArtistImages[];
   readonly external_urls: {
     readonly spotify: string;
   };
-  readonly name: string;
-  readonly href: string;
-  readonly images: itemsImages[];
 };
-
-type itemsImages = {
-  readonly url: string;
-};
-
-export const getSpotifyParams = (hash: string) => {
-  const stringAfterHash = hash.substring(1);
-
-  const urlParams = stringAfterHash.split("&");
-  const splittedParams = urlParams.reduce(
-    (accumulater: any, currentValue: string) => {
-      const [key, value] = currentValue.split("=");
-      accumulater[key] = value;
-      return accumulater;
-    },
-    {}
-  );
-  console.log(stringAfterHash, urlParams, splittedParams);
-  return splittedParams;
-};
-
-export function recordAccessToken(token: string) {
-  axios({
-    method: "patch",
-    headers: {
-      Authorization: `Bearer ${process.env.NEXT_PUBLIC_AIRTABLE_TOKEN}`,
-      "Content-Type": "application/json",
-    },
-    url: `${process.env.NEXT_PUBLIC_AIRTABLE_URI}/spotify_token`,
-    data: {
-      records: [
-        {
-          id: "recxh8d64XoW8kWTm",
-          fields: {
-            access_token: token,
-          },
-        },
-      ],
-    },
-  });
-}
 
 export function recordSpotifyCode(code: string) {
   axios({
@@ -129,7 +66,7 @@ export const getSpotifyToken = async () => {
     }),
   })
     .then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
       return res.data.access_token;
     })
     .catch((error) => console.log(error.response.data));
@@ -150,7 +87,7 @@ export const getTopArtists = async () => {
       },
     })
     .then((res) => {
-      console.log("dapet data artist", res.data);
+      // console.log("dapet data artist", res.data);
       return res.data;
     })
     .catch((error) => console.log(error.response.data));

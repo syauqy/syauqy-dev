@@ -18,3 +18,8 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.tippy-box[data-theme~="syauqy"] {
+  background-color: #0092ff;
+  color: white;
+}

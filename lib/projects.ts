@@ -59,11 +59,6 @@ export const stackColors = [
   },
   {
     stack_name: "Tailwind CSS",
-    class: "bg-green-50 text-brand-tailwind",
+    class: `bg-green-50 text-brand-tailwind`,
   },
 ];
-
-export const stackClass = (stack: string) => {
-  const classes = _.find(stackColors, { stack_name: stack });
-  return [classes?.class, "text-xs p-1 rounded mr-2 mb-1"];
-};

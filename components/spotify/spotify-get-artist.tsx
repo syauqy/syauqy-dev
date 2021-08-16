@@ -3,11 +3,9 @@ import Link from "next/link";
 import axios from "axios";
 import {
   USER_TOP_ARTIST_ENDPOINT,
-  spotifyProps,
   SPOTIFY_AUTH_URL,
+  SpotifyProps,
   recordSpotifyCode,
-  getSpotifyParams,
-  recordAccessToken,
 } from "~/lib/spotify";
 import querystring from "querystring";
 
@@ -19,27 +17,8 @@ const refresh_token = process.env.NEXT_PUBLIC_SPOTIFY_REFRESH_TOKEN;
 export default function SpotifyGetArtist() {
   const [token, setToken] = useState("");
   const [code, setCode] = useState("");
-  const [data, setData] = useState<spotifyProps>({});
+  const [data, setData] = useState<SpotifyProps>({} as SpotifyProps);
   const basic = Buffer.from(`${client_id}:${client_secret}`).toString("base64");
-
-  // console.log(token);
-
-  //get spotify token from airtable - implicit grant
-  async function getSpotifyAirtableToken() {
-    axios
-      .get(
-        `${process.env.NEXT_PUBLIC_AIRTABLE_URI}/spotify_token/recxh8d64XoW8kWTm`,
-        {
-          headers: {
-            Authorization: `Bearer ${process.env.NEXT_PUBLIC_AIRTABLE_TOKEN}`,
-          },
-        }
-      )
-      .then((res) => {
-        setToken(res.data.fields.access_token);
-      })
-      .catch((error) => console.log(error));
-  }
 
   //get spotify code
   async function getSpotifyCode() {
@@ -100,48 +79,13 @@ export default function SpotifyGetArtist() {
       .catch((error) => console.log(error.response.data));
   };
 
-  //save new top artists list to airtable -> for main components update
-  function saveTopArtists(data: spotifyProps) {
-    getTopArtists();
-    console.log("data spotify", data);
-    axios({
-      method: "post",
-      headers: {
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_AIRTABLE_TOKEN}`,
-        "Content-Type": "application/json",
-      },
-      url: `${process.env.NEXT_PUBLIC_AIRTABLE_URI}/spotify_artist`,
-      data: generateRecords(data),
-    });
-  }
-
-  //generate artist data records for airtable post
-  const generateRecords = (data: spotifyProps) => {
-    // console.log('data spotify',data);
-    const records = {
-      records: data?.items
-        ? data.items.map((artist) => ({
-            fields: {
-              name: artist.name,
-              url: artist.external_urls.spotify,
-              img_url: artist.images[1].url,
-            },
-          }))
-        : {},
-    };
-    console.log("generate", records);
-    return records;
-  };
-
   useEffect(() => {
     if (window.location.search) {
       const urlSpotifyResponse = new URLSearchParams(window.location.search);
       const params = Object.fromEntries(urlSpotifyResponse.entries());
       recordSpotifyCode(params.code);
     }
-    // getSpotifyToken();
   }, []);
-  // console.log(token);
 
   return (
     <div className="flex flex-col space-y-2">
@@ -155,12 +99,6 @@ export default function SpotifyGetArtist() {
         onClick={() => getTopArtists()}
       >
         Request Artist List
-      </button>
-      <button
-        className="rounded-full py-3 px-6 bg-green-400 text-white"
-        onClick={() => saveTopArtists(data)}
-      >
-        Save Artist to Database
       </button>
     </div>
   );
