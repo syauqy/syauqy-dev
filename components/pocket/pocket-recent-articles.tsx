@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { PocketArticles, PocketList, PocketAuthors } from "~/lib/pocket";
 import _ from "lodash";
-import { AnchorText } from "../ui/anchor-text";
 
 export default function PocketRecentArticles() {
   const [pockets, setPocket] = useState<PocketArticles>({} as PocketArticles);
@@ -20,7 +19,7 @@ export default function PocketRecentArticles() {
     getPocketArticles();
   }, []);
 
-  console.log(pockets);
+  // console.log(pockets);
   return (
     <div className="p-5 pb-6 w-full bg-white bg-opacity-50 rounded-md shadow-md">
       <h2 className="text-lg font-semibold pb-4 text-gray-700">

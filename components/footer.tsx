@@ -30,40 +30,40 @@ export function Footer() {
             hey@syauqy.dev
           </AnchorText>
         </p>
-        <div className="flex flex-wrap text-gray-500 font-medium">
-          <GhostAnchorText
-            href="https://twitter.com/syauqy"
-            hoverColor="hover:bg-brand-twitter hover:text-white mr-4 mb-1"
-            target="_blank"
-            rel="nofollow noopener noreferrer"
-          >
-            Twitter
-          </GhostAnchorText>
-          <GhostAnchorText
-            href="https://github.com/syauqy"
-            hoverColor="hover:bg-gray-800 hover:text-white mr-4 mb-1"
-            target="_blank"
-            rel="nofollow noopener noreferrer"
-          >
-            GitHub
-          </GhostAnchorText>
-          <GhostAnchorText
-            href="https://www.linkedin.com/in/syauqyaziz/"
-            hoverColor="hover:bg-brand-linkedin hover:text-white mr-4 mb-1"
-            target="_blank"
-            rel="nofollow noopener noreferrer"
-          >
-            LinkedIn
-          </GhostAnchorText>
-          <GhostAnchorText
-            href="https://www.instagram.com/syauqyaziz/"
-            hoverColor="bg-gradient-to-r hover:from-yellow-500 hover:to-pink-500 hover:text-white mr-4 mb-1"
-            target="_blank"
-            rel="nofollow noopener noreferrer"
-          >
-            Instagram
-          </GhostAnchorText>
-        </div>
+      </div>
+      <div className="flex flex-wrap text-gray-500 font-medium mt-12">
+        <GhostAnchorText
+          href="https://twitter.com/syauqy"
+          hoverColor="hover:bg-brand-twitter hover:text-white mr-4 mb-1"
+          target="_blank"
+          rel="nofollow noopener noreferrer"
+        >
+          Twitter
+        </GhostAnchorText>
+        <GhostAnchorText
+          href="https://github.com/syauqy"
+          hoverColor="hover:bg-gray-800 hover:text-white mr-4 mb-1"
+          target="_blank"
+          rel="nofollow noopener noreferrer"
+        >
+          GitHub
+        </GhostAnchorText>
+        <GhostAnchorText
+          href="https://www.linkedin.com/in/syauqyaziz/"
+          hoverColor="hover:bg-brand-linkedin hover:text-white mr-4 mb-1"
+          target="_blank"
+          rel="nofollow noopener noreferrer"
+        >
+          LinkedIn
+        </GhostAnchorText>
+        <GhostAnchorText
+          href="https://www.instagram.com/syauqyaziz/"
+          hoverColor="bg-gradient-to-r hover:from-yellow-500 hover:to-pink-500 hover:text-white mr-4 mb-1"
+          target="_blank"
+          rel="nofollow noopener noreferrer"
+        >
+          Instagram
+        </GhostAnchorText>
       </div>
     </div>
   );
