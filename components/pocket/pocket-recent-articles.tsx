@@ -70,9 +70,9 @@ export default function PocketRecentArticles() {
                       className="object-cover w-full h-full"
                       src={pocket.top_image_url}
                       alt={pocket.resolved_title}
-                      width={200}
-                      height={200}
-                      quality={100}
+                      width={180}
+                      height={180}
+                      quality={90}
                     />
                     {/* <img
                       className="object-cover w-full h-full"
