@@ -3,6 +3,7 @@ import { recordPocketArticles } from "~/lib/pocket";
 import axios from "axios";
 import router from "next/router";
 
+const POCKET_REDIRECT_URI = `${process.env.NEXT_PUBLIC_HOST}/pemuda-setempat`;
 export default function PocketGetArticles() {
   async function getRequestToken() {
     const response = await fetch(
@@ -14,7 +15,7 @@ export default function PocketGetArticles() {
       localStorage.clear();
       localStorage.setItem("pocketRequestToken", code);
       router.push(
-        `https://getpocket.com/auth/authorize?request_token=${code}&redirect_uri=${process.env.NEXT_PUBLIC_POCKET_REDIRECT_URI}`
+        `https://getpocket.com/auth/authorize?request_token=${code}&redirect_uri=${POCKET_REDIRECT_URI}`
       );
     }
   }
