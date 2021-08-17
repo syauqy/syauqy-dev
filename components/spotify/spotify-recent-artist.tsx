@@ -51,7 +51,6 @@ export default function SpotifyRecentArtist() {
                           alt={artist.name}
                           width={100}
                           height={100}
-                          quality={90}
                         />
                       </a>
                     </Link>

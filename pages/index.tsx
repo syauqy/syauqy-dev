@@ -11,16 +11,16 @@ import HomeProjectsSection from "~/components/home/home-projects-section";
 
 const meta = {
   title: `Syauqy Aziz`,
-  description: `Product manager and web developer. Currently living in Yogyakarta, Indonesia. Curently building web and mobile software at Jala`,
+  description: `Product manager and spare-time web developer.`,
 };
 
 export default function Home() {
   return (
     <Page>
       <NextSeo
-        // description={meta.description}
         openGraph={{ title: meta.title, description: meta.description }}
-        title={meta.title}
+        title={`${meta.title} - ${meta.description}`}
+        description={meta.description}
       />
 
       <PageContent>

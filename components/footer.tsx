@@ -31,7 +31,7 @@ export function Footer() {
           </AnchorText>
         </p>
       </div>
-      <div className="flex flex-wrap text-gray-500 font-medium mt-12">
+      <div className="flex flex-wrap text-gray-600 font-medium mt-12">
         <GhostAnchorText
           href="https://twitter.com/syauqy"
           hoverColor="hover:bg-brand-twitter hover:text-white mr-4 mb-1"

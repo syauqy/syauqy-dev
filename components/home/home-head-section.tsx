@@ -16,7 +16,6 @@ export default function HomeHeadSection() {
               placeholder="blur"
               width={80}
               height={80}
-              quality={100}
             />
           </div>
 

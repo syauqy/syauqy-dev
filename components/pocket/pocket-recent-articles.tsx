@@ -19,7 +19,6 @@ export default function PocketRecentArticles() {
     getPocketArticles();
   }, []);
 
-  // console.log(pockets);
   return (
     <div className="p-5 pb-6 w-full bg-white bg-opacity-50 rounded-md shadow-md">
       <h2 className="text-lg font-semibold pb-4 text-gray-700">
@@ -31,7 +30,7 @@ export default function PocketRecentArticles() {
             _.mapValues(pockets, (pocket: PocketList) => (
               <div
                 key={pocket.item_id}
-                className="border-gray-300 rounded-md border hover:shadow-md"
+                className="border-gray-300 rounded-md border hover:shadow-md overflow-hidden"
               >
                 <Link href={pocket.resolved_url} passHref>
                   <a
@@ -44,7 +43,7 @@ export default function PocketRecentArticles() {
                         <h2 className="text-md text-gray-700 font-medium max-h-12 truncate">
                           {pocket.resolved_title}
                         </h2>
-                        <p className="text-gray-400 text-xs font-light max-h-12 overflow-y-auto">
+                        <p className="text-gray-500 text-xs font-light max-h-12 overflow-y-auto">
                           {pocket.excerpt ? pocket.excerpt : ""}
                         </p>
                       </div>
@@ -66,13 +65,12 @@ export default function PocketRecentArticles() {
                         </div>
                       )}
                     </div>
-                    <div className="flex-shrink-0">
-                      <img
-                        className="object-cover w-full h-full"
-                        src={pocket.top_image_url}
-                        alt={pocket.resolved_title}
-                      />
-                    </div>
+                    <img
+                      className="object-cover w-full h-full"
+                      src={pocket.top_image_url}
+                      alt={pocket.resolved_title}
+                      height={200}
+                    />
                   </a>
                 </Link>
               </div>
