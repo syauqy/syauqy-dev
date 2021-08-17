@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { PocketArticles, PocketList, PocketAuthors } from "~/lib/pocket";
 import _ from "lodash";
+import ExternalImageLoader from "../ui/external-image-loader";
 
 export default function PocketRecentArticles() {
   const [pockets, setPocket] = useState<PocketArticles>({} as PocketArticles);
@@ -65,12 +66,20 @@ export default function PocketRecentArticles() {
                         </div>
                       )}
                     </div>
-                    <img
+                    <ExternalImageLoader
+                      className="object-cover w-full h-full"
+                      src={pocket.top_image_url}
+                      alt={pocket.resolved_title}
+                      width={200}
+                      height={200}
+                      quality={100}
+                    />
+                    {/* <img
                       className="object-cover w-full h-full"
                       src={pocket.top_image_url}
                       alt={pocket.resolved_title}
                       height={200}
-                    />
+                    /> */}
                   </a>
                 </Link>
               </div>

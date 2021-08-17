@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { SpotifyProps, getTopArtists } from "~/lib/spotify";
+import ExternalImageLoader from "../ui/external-image-loader";
 import Image from "next/image";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
@@ -45,7 +46,7 @@ export default function SpotifyRecentArtist() {
                   <div>
                     <Link href={artist.external_urls.spotify} passHref>
                       <a target="_blank" rel="nofollow noopener noreferrer">
-                        <Image
+                        <ExternalImageLoader
                           className="object-cover shadow-md rounded-full"
                           src={artist.images[1].url}
                           alt={artist.name}

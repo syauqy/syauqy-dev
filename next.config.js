@@ -6,7 +6,7 @@ module.exports = {
     // domains: ["res.cloudinary.com"],
     // loader: "cloudinary",
     // path: "https://res.cloudinary.com/hajiudin/image/fetch/",
-    imageSizes: [256, 384, 640],
+    imageSizes: [240, 380, 640],
     domains: ["i.scdn.co", "openviewpartners.com", "nu.aeon.co"],
   },
   i18n: {
