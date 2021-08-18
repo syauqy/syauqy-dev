@@ -44,6 +44,7 @@ export type PocketList = {
 
 export type PocketAuthors = {
   readonly item_id?: string;
+  readonly author_id?: string;
   readonly name?: string;
 };
 

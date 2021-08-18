@@ -34,7 +34,7 @@ export function Footer() {
       <div className="flex flex-wrap text-gray-600 font-medium mt-12">
         <GhostAnchorText
           href="https://twitter.com/syauqy"
-          hoverColor="hover:bg-brand-twitter hover:text-white mr-4 mb-1"
+          hoverColor="hover:bg-brand-twitter hover:text-white mr-4 mb-3"
           target="_blank"
           rel="nofollow noopener noreferrer"
         >
@@ -42,7 +42,7 @@ export function Footer() {
         </GhostAnchorText>
         <GhostAnchorText
           href="https://github.com/syauqy"
-          hoverColor="hover:bg-gray-800 hover:text-white mr-4 mb-1"
+          hoverColor="hover:bg-gray-800 hover:text-white mr-4 mb-3"
           target="_blank"
           rel="nofollow noopener noreferrer"
         >
@@ -50,7 +50,7 @@ export function Footer() {
         </GhostAnchorText>
         <GhostAnchorText
           href="https://www.linkedin.com/in/syauqyaziz/"
-          hoverColor="hover:bg-brand-linkedin hover:text-white mr-4 mb-1"
+          hoverColor="hover:bg-brand-linkedin hover:text-white mr-4 mb-3"
           target="_blank"
           rel="nofollow noopener noreferrer"
         >
@@ -58,7 +58,7 @@ export function Footer() {
         </GhostAnchorText>
         <GhostAnchorText
           href="https://www.instagram.com/syauqyaziz/"
-          hoverColor="bg-gradient-to-r hover:from-yellow-500 hover:to-pink-500 hover:text-white mr-4 mb-1"
+          hoverColor="bg-gradient-to-r hover:from-yellow-500 hover:to-pink-500 hover:text-white mr-4 mb-3"
           target="_blank"
           rel="nofollow noopener noreferrer"
         >

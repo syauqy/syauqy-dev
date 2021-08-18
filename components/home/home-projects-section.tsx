@@ -6,59 +6,59 @@ import { ArrowRightIcon } from "@heroicons/react/solid";
 import { GhostAnchorText } from "~/components/ui/ghost-anchor-text";
 import _ from "lodash";
 
-const stackColors = [
-  {
-    stack_name: "Next.js",
-    class: "bg-gray-100 bg-opacity-25 text-gray-600",
-  },
-  {
-    stack_name: "Typescript",
-    class: "bg-blue-50 bg-opacity-25 text-blue-500",
-  },
-  {
-    stack_name: "Gatsby",
-    class: "bg-purple-50 bg-opacity-25 text-purple-500",
-  },
-  {
-    stack_name: "Chart.js",
-    class: "bg-pink-50 bg-opacity-25 text-pink-500 ",
-  },
-  {
-    stack_name: "Supabase",
-    class: "bg-green-50 bg-opacity-25 text-brand-supabase",
-  },
-  {
-    stack_name: "Tensorflowjs",
-    class: "bg-yellow-50 bg-opacity-25 text-yellow-500",
-  },
-  {
-    stack_name: "Mapbox",
-    class: "bg-blue-50 bg-opacity-25 text-blue-700",
-  },
-  {
-    stack_name: "Jala API",
-    class: "bg-blue-50 bg-opacity-25 text-brand-jala",
-  },
-  {
-    stack_name: "Chakra UI",
-    class: "bg-green-50 bg-opacity-25 text-brand-chakra",
-  },
-  {
-    stack_name: "Netlify CMS",
-    class: "bg-green-50 bg-opacity-25 text-brand-netlify",
-  },
-  {
-    stack_name: "Tailwind CSS",
-    class: `bg-green-50 bg-opacity-25 text-brand-tailwind`,
-  },
-];
+// const stackColors = [
+//   {
+//     stack_name: "Next.js",
+//     class: "bg-gray-100 bg-opacity-25 text-gray-600",
+//   },
+//   {
+//     stack_name: "Typescript",
+//     class: "bg-blue-50 bg-opacity-25 text-blue-500",
+//   },
+//   {
+//     stack_name: "Gatsby",
+//     class: "bg-purple-50 bg-opacity-25 text-purple-500",
+//   },
+//   {
+//     stack_name: "Chart.js",
+//     class: "bg-pink-50 bg-opacity-25 text-pink-500 ",
+//   },
+//   {
+//     stack_name: "Supabase",
+//     class: "bg-green-50 bg-opacity-25 text-brand-supabase",
+//   },
+//   {
+//     stack_name: "Tensorflowjs",
+//     class: "bg-yellow-50 bg-opacity-25 text-yellow-500",
+//   },
+//   {
+//     stack_name: "Mapbox",
+//     class: "bg-blue-50 bg-opacity-25 text-blue-700",
+//   },
+//   {
+//     stack_name: "Jala API",
+//     class: "bg-blue-50 bg-opacity-25 text-brand-jala",
+//   },
+//   {
+//     stack_name: "Chakra UI",
+//     class: "bg-green-50 bg-opacity-25 text-brand-chakra",
+//   },
+//   {
+//     stack_name: "Netlify CMS",
+//     class: "bg-green-50 bg-opacity-25 text-brand-netlify",
+//   },
+//   {
+//     stack_name: "Tailwind CSS",
+//     class: `bg-green-50 bg-opacity-25 text-brand-tailwind`,
+//   },
+// ];
 
 export default function HomeProjectsSection() {
   const [projects, setProjects] = useState<ProjectProps>({} as ProjectProps);
-  const stackClass = (stack: string) => {
-    const classes = _.find(stackColors, { stack_name: stack });
-    return [classes?.class, `text-xs p-1 rounded mr-2 mb-1`];
-  };
+  // const stackClass = (stack: string) => {
+  //   const classes = _.find(stackColors, { stack_name: stack });
+  //   return [classes?.class, `text-xs p-1 rounded mr-2 mb-1`];
+  // };
   function showProjects() {
     axios
       .get(
@@ -122,13 +122,13 @@ export default function HomeProjectsSection() {
                     ""
                   )}
                 </div>
-                <div className="flex flex-wrap">
+                {/* <div className="flex flex-wrap">
                   {project.fields.stacks.map((stack, i: number) => (
                     <div key={i} className={clsx(stackClass(stack))}>
                       {stack}
                     </div>
                   ))}
-                </div>
+                </div> */}
               </div>
             </div>
           ))

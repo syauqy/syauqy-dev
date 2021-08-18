@@ -20,6 +20,8 @@ export default function PocketRecentArticles() {
     getPocketArticles();
   }, []);
 
+  console.log(pockets);
+
   return (
     <div className="p-5 pb-6 w-full bg-white bg-opacity-50 rounded-md shadow-md">
       <h2 className="text-lg font-semibold pb-4 text-gray-700">
@@ -48,38 +50,38 @@ export default function PocketRecentArticles() {
                           {pocket.excerpt ? pocket.excerpt : ""}
                         </p>
                       </div>
-                      {pocket.authors ? (
-                        _.values(
-                          _.mapValues(pocket.authors, (auth: PocketAuthors) => (
-                            <div key={auth.item_id}>
-                              <p className="text-gray-500 text-sm truncate font-light">
-                                {auth ? auth.name : ""}
-                              </p>
-                            </div>
-                          ))
-                        )
-                      ) : (
-                        <div>
-                          <p className="text-gray-500 text-sm truncate font-light">
-                            {pocket.resolved_url}
-                          </p>
-                        </div>
-                      )}
+                      <div className="text-gray-500 text-sm truncate font-light">
+                        {pocket.authors ? (
+                          _.values(
+                            _.mapValues(
+                              pocket.authors,
+                              (auth: PocketAuthors) => (
+                                <span key={auth.author_id}>
+                                  {auth.author_id ===
+                                  _.findLastKey(pocket.authors)
+                                    ? auth.name
+                                    : auth.name + ", "}
+                                </span>
+                              )
+                            )
+                          )
+                        ) : (
+                          <div>
+                            <p className="text-gray-500 text-sm truncate font-light">
+                              {pocket.resolved_url}
+                            </p>
+                          </div>
+                        )}
+                      </div>
                     </div>
                     <ExternalImageLoader
                       className="object-cover w-full h-full"
                       src={pocket.top_image_url}
                       alt={pocket.resolved_title}
                       width={180}
-                      height={180}
+                      height={100}
                       quality={90}
                     />
-                    {/* <img
-                      className="object-cover w-full h-full"
-                      src={pocket.top_image_url}
-                      alt={pocket.resolved_title}
-                      height={200}
-                    /> */}
                   </a>
                 </Link>
               </div>

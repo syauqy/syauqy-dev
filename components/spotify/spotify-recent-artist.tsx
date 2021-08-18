@@ -47,7 +47,7 @@ export default function SpotifyRecentArtist() {
                     <Link href={artist.external_urls.spotify} passHref>
                       <a target="_blank" rel="nofollow noopener noreferrer">
                         <ExternalImageLoader
-                          className="object-cover shadow-md rounded-full"
+                          className="object-cover shadow-md bg-gray-400 rounded-full"
                           src={artist.images[1].url}
                           alt={artist.name}
                           width={100}
@@ -62,7 +62,7 @@ export default function SpotifyRecentArtist() {
           ))}
         </div>
       ) : (
-        <div className="animate-pulse flex flex-wrap justify-center">
+        <div className="animate-pulse grid grid-cols-5 gap-4 justify-center">
           <div className="h-20 w-20 bg-gray-400 rounded-full mx-2"></div>
           <div className="h-20 w-20 bg-gray-400 rounded-full mx-2"></div>
           <div className="h-20 w-20 bg-gray-400 rounded-full mx-2"></div>

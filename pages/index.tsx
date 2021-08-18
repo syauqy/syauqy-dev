@@ -11,7 +11,7 @@ import HomeProjectsSection from "~/components/home/home-projects-section";
 
 const meta = {
   title: `Syauqy Aziz`,
-  description: `Product manager and spare-time web developer.`,
+  description: `Product Manager and Spare-time Web Developer.`,
 };
 
 export default function Home() {
