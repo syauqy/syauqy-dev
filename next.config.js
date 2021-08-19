@@ -1,5 +1,6 @@
 const ContentSecurityPolicy = `
   default-src 'self';
+  script-src 'self' 'unsafe-inline' 'unsafe-eval';
   style-src 'self' 'unsafe-inline';
   frame-src 'self' cloudinary.com;
   img-src 'self' blob: data: https:;
