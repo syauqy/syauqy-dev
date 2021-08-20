@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { PostsProps, Post } from "~/lib/blog";
+import { GhostInternalLink } from "~/components/ui/ghost-interal-link";
 import { GhostAnchorText } from "~/components/ui/ghost-anchor-text";
 import dayjs from "dayjs";
 import LocalizedFormat from "dayjs/plugin/localizedFormat";
@@ -17,13 +18,13 @@ export default function HomeBlogList({ posts }: PostsProps) {
       <ul className="space-y-4">
         {posts.slice(0, 1).map((post: Post, i: number) => (
           <li key={i} className="space-y-2">
-            <GhostAnchorText
+            <GhostInternalLink
               className="text-lg text-gray-700 font-semibold truncate"
-              href={`/blog/${post.slug}`}
+              path={`/blog/${post.slug}`}
               hoverColor="hover:bg-blue-500 hover:text-white"
             >
               {post.frontmatter.title}
-            </GhostAnchorText>
+            </GhostInternalLink>
             <p className="text-md text-gray-600">{post.frontmatter.summary}</p>
             <p className="text-sm text-gray-600 font-light">
               {dayjs(post.frontmatter.publishedAt).format("LL")}

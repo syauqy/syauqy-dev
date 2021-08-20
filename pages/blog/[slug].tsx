@@ -47,12 +47,12 @@ const Blog = (props: BlogProps) => {
         description={meta.description}
       />
       <PageContent>
-        <Container className="space-y-4">
+        <Container className="space-y-2">
           <div className="px-5 text-gray-700">
             <Link href="/blogs">
               <a className="flex">
                 <ChevronLeftIcon className="h-5 w-5 my-1" />
-                <span className="px-1 text-lg">Blogs</span>
+                <span className="px-1 text-lg">Blog</span>
               </a>
             </Link>
           </div>
