@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { SpotifyProps, getTopArtists } from "~/lib/spotify";
 import ExternalImageLoader from "../ui/external-image-loader";
-import Image from "next/image";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 
