@@ -2,7 +2,56 @@
 title: Is this a blog?
 publishedAt: "2021-08-20"
 summary: "Just installing the mdx-bundler, still working on it. Let's see if it's working on my website."
-image: "/static/images/10-days-in-norway/banner.png"
+image: "/syauqy-head.jpg"
 ---
 
-Hello guys! Nothing to see here, just testing out to post content with mdx-bundler.
+<ImageMDX
+  alt={`Syauqy`}
+  src={`/syauqy-head.jpg`}
+  width={100}
+  height={100}
+  priority
+/>
+
+Hello guys! Nothing to see here, just testing out to post content with [mdx-bundler](https://github.com/kentcdodds/mdx-bundler).
+
+Test all markdown elements
+
+# It should be heading 1
+
+## It should be heading 2
+
+### It should be heading 3
+
+**it should be bold**
+
+_bend like Pisa_
+
+> blockquote
+
+---
+
+1. First item
+2. Second item
+3. Third item
+
+`code`
+
+[this is a link](https://syauqy.dev)
+
+[this is an internal link](#syauqy)
+
+![syauqy](/syauqy-head.jpg)
+
+```jsx
+{
+  "firstName": "John",
+  "lastName": "Smith",
+  "age": 25
+}
+```
+
+```jsx
+<PrimaryButton>Hello World!</PrimaryButton>
+<SecondaryButton>Hello World!</SecondaryButton>
+```

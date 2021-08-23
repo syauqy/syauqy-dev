@@ -1,8 +1,7 @@
 import React, { useMemo } from "react";
-import dayjs from "dayjs";
-import LocalizedFormat from "dayjs/plugin/localizedFormat";
-import { ChevronLeftIcon } from "@heroicons/react/outline";
 import Link from "next/link";
+import Image, { ImageProps } from "next/image";
+
 import { NextSeo } from "next-seo";
 import { Page } from "~/components/layouts/page";
 import { PageContent } from "~/components/layouts/page-content";
@@ -12,11 +11,29 @@ import { Footer } from "~/components/footer";
 import { getMDXComponent } from "mdx-bundler/client";
 import { getAllPosts, getSinglePost } from "~/lib/mdx";
 import { BlogProps } from "~/lib/blog";
+import mdxcomponents, { ImageMDXProps } from "~/components/blog/mdx-components";
+
+import dayjs from "dayjs";
+import LocalizedFormat from "dayjs/plugin/localizedFormat";
+import { ChevronLeftIcon } from "@heroicons/react/outline";
 
 dayjs.extend(LocalizedFormat);
 
 const Blog = (props: BlogProps) => {
   const Component = useMemo(() => getMDXComponent(props.code), [props.code]);
+  const ImageMDX: React.FC<ImageMDXProps> = (props) => {
+    console.log(props);
+    return (
+      <Image
+        src={props.src}
+        height={props.height}
+        width={props.width}
+        alt={props.alt}
+        priority={props.priority}
+        //   {...props}
+      />
+    );
+  };
   const meta = {
     author: "Syauqy Aziz",
     title: `${props.frontmatter.title} - Syauqy Aziz`,
@@ -64,7 +81,9 @@ const Blog = (props: BlogProps) => {
                 </h1>
                 <p className="text-gray-600 text-sm">{meta.publishedAt}</p>
               </div>
-              <Component />
+              <div className="prose w-full max-w-none">
+                <Component components={{ ...mdxcomponents, ImageMDX }} />
+              </div>
             </div>
           </div>
           <Footer />

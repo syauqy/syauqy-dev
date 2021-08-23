@@ -21,10 +21,30 @@ module.exports = {
           pocket: "#EE4056",
         },
       },
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            color: theme("colors.gray.700"),
+            a: {
+              "text-decoration": "none",
+            },
+            "h2,h3,h4": {
+              "scroll-margin-top": defaultTheme.spacing[32],
+            },
+            code: { color: theme("colors.pink.500") },
+            "blockquote p:first-of-type::before": false,
+            "blockquote p:last-of-type::after": false,
+          },
+        },
+      }),
     },
   },
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
+  corePlugins: {
+    // ...
+    textDecoration: false,
+  },
 };
