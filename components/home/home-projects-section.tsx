@@ -3,55 +3,9 @@ import { ProjectProps } from "~/lib/projects";
 import axios from "axios";
 import clsx from "clsx";
 import { ArrowRightIcon } from "@heroicons/react/solid";
+import HomeProjectSkeleton from "./home-project-skeleton";
 import { GhostAnchorText } from "~/components/ui/ghost-anchor-text";
 import _ from "lodash";
-
-// const stackColors = [
-//   {
-//     stack_name: "Next.js",
-//     class: "bg-gray-100 bg-opacity-25 text-gray-600",
-//   },
-//   {
-//     stack_name: "Typescript",
-//     class: "bg-blue-50 bg-opacity-25 text-blue-500",
-//   },
-//   {
-//     stack_name: "Gatsby",
-//     class: "bg-purple-50 bg-opacity-25 text-purple-500",
-//   },
-//   {
-//     stack_name: "Chart.js",
-//     class: "bg-pink-50 bg-opacity-25 text-pink-500 ",
-//   },
-//   {
-//     stack_name: "Supabase",
-//     class: "bg-green-50 bg-opacity-25 text-brand-supabase",
-//   },
-//   {
-//     stack_name: "Tensorflowjs",
-//     class: "bg-yellow-50 bg-opacity-25 text-yellow-500",
-//   },
-//   {
-//     stack_name: "Mapbox",
-//     class: "bg-blue-50 bg-opacity-25 text-blue-700",
-//   },
-//   {
-//     stack_name: "Jala API",
-//     class: "bg-blue-50 bg-opacity-25 text-brand-jala",
-//   },
-//   {
-//     stack_name: "Chakra UI",
-//     class: "bg-green-50 bg-opacity-25 text-brand-chakra",
-//   },
-//   {
-//     stack_name: "Netlify CMS",
-//     class: "bg-green-50 bg-opacity-25 text-brand-netlify",
-//   },
-//   {
-//     stack_name: "Tailwind CSS",
-//     class: `bg-green-50 bg-opacity-25 text-brand-tailwind`,
-//   },
-// ];
 
 export default function HomeProjectsSection() {
   const [projects, setProjects] = useState<ProjectProps>({} as ProjectProps);
@@ -122,25 +76,15 @@ export default function HomeProjectsSection() {
                     ""
                   )}
                 </div>
-                {/* <div className="flex flex-wrap">
-                  {project.fields.stacks.map((stack, i: number) => (
-                    <div key={i} className={clsx(stackClass(stack))}>
-                      {stack}
-                    </div>
-                  ))}
-                </div> */}
               </div>
             </div>
           ))
         ) : (
-          <div className="border-gray-300 rounded-md border p-4">
-            <div className="flex flex-col space-y-4 animate-pulse">
-              <div className="bg-gray-400 h-5 w-1/3 rounded-md"></div>
-              <div className="bg-gray-400 h-10 rounded-md"></div>
-              <div className="bg-gray-400 h-4 w-1/4 rounded-md"></div>
-              <div className="bg-gray-400 h-3 w-1/2 rounded-md"></div>
-            </div>
-          </div>
+          <>
+            <HomeProjectSkeleton />
+            <HomeProjectSkeleton />
+            <HomeProjectSkeleton />
+          </>
         )}
         <div className="text-blue-600 text-light flex">
           <GhostAnchorText

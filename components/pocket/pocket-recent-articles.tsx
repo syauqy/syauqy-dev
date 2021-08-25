@@ -41,10 +41,10 @@ export default function PocketRecentArticles() {
                   >
                     <div className="space-y-2 p-4 col-span-2">
                       <div className="">
-                        <h2 className="text-md text-gray-700 font-medium max-h-12 truncate">
+                        <h2 className="text-md text-gray-700 font-medium truncate">
                           {pocket.resolved_title}
                         </h2>
-                        <p className="text-gray-500 text-xs font-light max-h-12 overflow-y-auto">
+                        <p className="text-gray-500 text-xs font-light line-clamp-3 overflow-y-auto">
                           {pocket.excerpt ? pocket.excerpt : ""}
                         </p>
                       </div>

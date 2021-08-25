@@ -17,19 +17,17 @@
     "axios": "^0.21.1",
     "clsx": "^1.1.1",
     "dayjs": "^1.10.6",
-    "esbuild": "^0.12.20",
-    "esm": "^3.2.25",
+    "esbuild": "^0.12.22",
     "gray-matter": "^4.0.3",
     "lodash": "^4.17.21",
     "mdx-bundler": "^6.0.1",
     "next": "11.0.1",
     "next-seo": "^4.26.0",
+    "next-transpile-modules": "^8.0.0",
     "querystring": "^0.2.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-hook-form": "^7.13.0",
-    "rehype-highlight": "^5.0.0",
-    "remark-gfm": "^2.0.0"
+    "react-hook-form": "^7.13.0"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.172",
@@ -38,6 +36,7 @@
     "eslint": "7.31.0",
     "eslint-config-next": "11.0.1",
     "postcss": "^8.3.6",
+    "remark-gfm": "^2.0.0",
     "tailwindcss": "^2.2.7",
     "typescript": "4.3.5"
   }

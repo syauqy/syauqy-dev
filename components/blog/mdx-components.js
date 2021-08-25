@@ -1,47 +1,8 @@
 import * as React from "react";
-import Link, { LinkProps } from "next/link";
-import Image, { ImageProps } from "next/image";
+import Link from "next/link";
+import Image from "next/image";
 
 import { AnchorText } from "~/components/ui/anchor-text";
-import { ReactNode } from "react";
-
-import noImage from "~/public/syauqy-head.jpg";
-
-// export type CustomLinkProps = {
-//   href?: string;
-//   children?: ReactNode;
-// };
-
-// export type ImageMDXProps = {
-//   href?: string;
-//   src?: StaticImport;
-//   width?: number;
-//   height?: number;
-//   priority?: boolean;
-//   alt?: string;
-//   children?: ReactNode;
-// };
-
-// export type ImageMDXProps = {
-//   children?: ReactNode;
-//   src: StaticImport;
-//   width?: number;
-//   height?: number;
-//   priority?: boolean;
-//   alt?: string;
-// };
-
-// interface StaticImageData {
-//   src: string;
-//   height: number;
-//   width: number;
-//   blurDataURL?: string;
-// }
-
-// interface StaticRequire {
-//   default: StaticImageData;
-// }
-// declare type StaticImport = StaticRequire | StaticImageData;
 
 const CustomLink = (props) => {
   //   console.log(props);
@@ -75,7 +36,7 @@ const ImageMDX = (props) => {
   const height = props.height;
   const width = props.width;
   const priority = props.priority;
-  console.log(props);
+  // console.log(props);
   return (
     <Image
       src={src}
