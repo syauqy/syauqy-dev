@@ -23,7 +23,6 @@ const CustomLink = (props) => {
     <AnchorText
       target="_blank"
       rel="noopener noreferrer"
-      className="font-medium no-underline"
       hoverColor="hover:bg-blue-500 hover:text-white"
       {...props}
     />
@@ -38,14 +37,18 @@ const ImageMDX = (props) => {
   const priority = props.priority;
   // console.log(props);
   return (
-    <Image
-      src={src}
-      height={height}
-      width={width}
-      alt={alt}
-      priority={priority}
-      {...props}
-    />
+    <div className="grid grid-cols-1 justify-items-center space-y-1">
+      <Image
+        src={src}
+        height={height}
+        width={width}
+        alt={alt}
+        priority={priority}
+        className="rounded-md"
+        {...props}
+      />
+      <p className="text-sm text-gray-400 italic">{props.caption}</p>
+    </div>
   );
 };
 

@@ -28,6 +28,7 @@ module.exports = {
             color: theme("colors.gray.700"),
             a: {
               "text-decoration": "none",
+              "font-weight": 400,
             },
             "h2,h3,h4": {
               "scroll-margin-top": defaultTheme.spacing[32],

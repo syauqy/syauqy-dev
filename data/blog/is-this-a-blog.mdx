@@ -7,9 +7,9 @@ image: "/syauqy-head.jpg"
 
 <ImageMDX
   alt={`Syauqy`}
-  src={frontmatter.image}
-  width={100}
-  height={100}
+  src={`https://media.giphy.com/media/Vwz4zdntMXrUY/giphy.gif`}
+  width={1280}
+  height={720}
   priority
 />
 
@@ -41,7 +41,14 @@ _bend like Pisa_
 
 [this is an internal link](#syauqy)
 
-![syauqy](/syauqy-head.jpg)
+<ImageMDX
+  alt={`Syauqy`}
+  src={frontmatter.image}
+  width={200}
+  height={200}
+  priority
+  caption={`this is syauqy`}
+/>
 
 ```jsx
 {

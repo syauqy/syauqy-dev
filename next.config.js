@@ -44,7 +44,12 @@ module.exports = {
     // loader: "cloudinary",
     // path: "https://res.cloudinary.com/hajiudin/image/fetch/",
     imageSizes: [300, 400, 640],
-    domains: ["i.scdn.co", "openviewpartners.com", "nu.aeon.co"],
+    domains: [
+      "i.scdn.co",
+      "openviewpartners.com",
+      "nu.aeon.co",
+      "media.giphy.com",
+    ],
   },
   i18n: {
     defaultLocale: "en-US",
