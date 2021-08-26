@@ -5,7 +5,7 @@ import profileHead from "~/public/syauqy-head.jpg";
 
 export default function HomeHeadSection() {
   return (
-    <div className="head p-5 pb-6 w-full bg-white bg-opacity-50 rounded-md shadow-md">
+    <div className="head p-5 pb-6 w-full bg-white bg-opacity-50 rounded-lg shadow-md">
       <div className="space-y-3 text-gray-700">
         <div className="flex flex-row gap-4 items-center border-b pb-2">
           <div className="flex-shrink-0">

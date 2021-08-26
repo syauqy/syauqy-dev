@@ -21,7 +21,7 @@ export default function PocketRecentArticles() {
   }, []);
 
   return (
-    <div className="p-5 pb-6 w-full bg-white bg-opacity-50 rounded-md shadow-md">
+    <div className="p-5 pb-6 w-full bg-white bg-opacity-50 rounded-lg shadow-md">
       <h2 className="text-lg font-semibold pb-4 text-gray-700">
         🗞️ Recent reads
       </h2>
