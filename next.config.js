@@ -1,5 +1,6 @@
 const ContentSecurityPolicy = `
   default-src 'self';
+  connect-src 'self' api.airtable.com stats.g.doubleclick.net res.cloudinary.com accounts.spotify.com api.spotify.com;
   script-src 'self' 'unsafe-inline' 'unsafe-eval';
   style-src 'self' 'unsafe-inline';
   frame-src 'self' cloudinary.com;

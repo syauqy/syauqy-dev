@@ -12,6 +12,10 @@ export type PostsProps = {
   posts: Post[];
 };
 
+export type PostProps = {
+  post: Post;
+};
+
 export type Post = {
   slug: string;
   frontmatter: {

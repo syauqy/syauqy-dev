@@ -53,7 +53,7 @@ const Blog = (props: BlogProps) => {
       <PageContent>
         <Container className="space-y-2">
           <div className="px-5 text-gray-700">
-            <Link href="/blogs">
+            <Link href="/blog">
               <a className="flex">
                 <ChevronLeftIcon className="h-5 w-5 my-1" />
                 <span className="px-1 text-lg">Blog</span>
