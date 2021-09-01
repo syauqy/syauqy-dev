@@ -62,11 +62,11 @@ export default function SpotifyRecentArtist() {
         </div>
       ) : (
         <div className="animate-pulse grid grid-cols-5 gap-4 justify-center">
-          <div className="h-20 w-20 bg-gray-400 rounded-full mx-2"></div>
-          <div className="h-20 w-20 bg-gray-400 rounded-full mx-2"></div>
-          <div className="h-20 w-20 bg-gray-400 rounded-full mx-2"></div>
-          <div className="h-20 w-20 bg-gray-400 rounded-full mx-2"></div>
-          <div className="h-20 w-20 bg-gray-400 rounded-full mx-2"></div>
+          <div className="md:h-20 md:w-20 h-16 w-16 bg-gray-400 rounded-full"></div>
+          <div className="md:h-20 md:w-20 h-16 w-16 bg-gray-400 rounded-full"></div>
+          <div className="md:h-20 md:w-20 h-16 w-16 bg-gray-400 rounded-full"></div>
+          <div className="md:h-20 md:w-20 h-16 w-16 bg-gray-400 rounded-full"></div>
+          <div className="md:h-20 md:w-20 h-16 w-16 bg-gray-400 rounded-full"></div>
         </div>
       )}
     </div>
