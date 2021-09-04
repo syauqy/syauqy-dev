@@ -4,6 +4,7 @@ import Link from "next/link";
 import { PocketArticles, PocketList, PocketAuthors } from "~/lib/pocket";
 import _ from "lodash";
 import ExternalImageLoader from "../ui/external-image-loader";
+import * as dayjs from "dayjs";
 
 export default function PocketRecentArticles() {
   const [pockets, setPocket] = useState<PocketArticles>({} as PocketArticles);
@@ -15,6 +16,7 @@ export default function PocketRecentArticles() {
     const pocket = await response.json();
     setPocket(pocket.list);
   }
+  console.log(pockets);
 
   useEffect(() => {
     getPocketArticles();
@@ -28,7 +30,7 @@ export default function PocketRecentArticles() {
       <div className="flex flex-col space-y-4">
         {_.valuesIn(pockets).length ? (
           _.values(
-            _.mapValues(pockets, (pocket: PocketList) => (
+            _.mapValues(_.sortBy(pockets, "sort_id"), (pocket: PocketList) => (
               <div
                 key={pocket.item_id}
                 className="border-gray-300 rounded-md border hover:shadow-md overflow-hidden"
@@ -40,11 +42,11 @@ export default function PocketRecentArticles() {
                     className="grid grid-cols-3 gap-1 overflow-hidden"
                   >
                     <div className="space-y-2 p-4 col-span-2">
-                      <div className="">
-                        <h2 className="text-md text-gray-700 font-medium truncate">
+                      <div className="space-y-2">
+                        <h2 className="text-md text-gray-700 font-medium line-clamp-2 leading-normal">
                           {pocket.resolved_title}
                         </h2>
-                        <p className="text-gray-500 text-xs font-light line-clamp-3 overflow-y-auto">
+                        <p className="text-gray-500 text-xs font-light line-clamp-3">
                           {pocket.excerpt ? pocket.excerpt : ""}
                         </p>
                       </div>
