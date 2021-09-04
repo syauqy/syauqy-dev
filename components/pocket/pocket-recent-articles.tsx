@@ -16,7 +16,7 @@ export default function PocketRecentArticles() {
     const pocket = await response.json();
     setPocket(pocket.list);
   }
-  console.log(pockets);
+  // console.log(pockets);
 
   useEffect(() => {
     getPocketArticles();
