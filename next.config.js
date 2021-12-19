@@ -30,6 +30,7 @@ const securityHeaders = [
 module.exports = {
   // experimental: { esmExternals: true },
   // https://nextjs.org/docs/api-reference/next.config.js/react-strict-mode
+  swcMinify: true,
   reactStrictMode: true,
   headers: async () => {
     return [
