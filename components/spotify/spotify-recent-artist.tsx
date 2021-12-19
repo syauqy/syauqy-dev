@@ -18,7 +18,7 @@ export default function SpotifyRecentArtist() {
   useEffect(() => {
     showTopArtists();
   }, []);
-  console.log(artists);
+  // console.log(artists);
 
   return (
     <div className="p-5 pb-6 w-full bg-white bg-opacity-50 rounded-lg shadow-md">
@@ -57,7 +57,7 @@ export default function SpotifyRecentArtist() {
                         />
                         ) : (
                           <Image
-                          className="object-cover shadow-md bg-gray-200 rounded-full"
+                          className="object-cover shadow-md bg-gray-100 rounded-full"
                           src={spotifyLogo}
                           alt={artist.name}
                           width={100}
