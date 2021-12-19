@@ -4,6 +4,8 @@ import { SpotifyProps, getTopArtists } from "~/lib/spotify";
 import ExternalImageLoader from "../ui/external-image-loader";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
+import spotifyLogo from "~/public/spotify-logo.png";
+import Image from "next/image";
 
 export default function SpotifyRecentArtist() {
   const [artists, setArtists] = useState<SpotifyProps>({} as SpotifyProps);
@@ -16,7 +18,7 @@ export default function SpotifyRecentArtist() {
   useEffect(() => {
     showTopArtists();
   }, []);
-  // console.log(artists);
+  console.log(artists);
 
   return (
     <div className="p-5 pb-6 w-full bg-white bg-opacity-50 rounded-lg shadow-md">
@@ -45,13 +47,25 @@ export default function SpotifyRecentArtist() {
                   <div>
                     <Link href={artist.external_urls.spotify} passHref>
                       <a target="_blank" rel="nofollow noopener noreferrer">
-                        <ExternalImageLoader
+                        {artist.images.length ? (
+                          <ExternalImageLoader
                           className="object-cover shadow-md bg-gray-400 rounded-full"
                           src={artist.images[1].url}
                           alt={artist.name}
                           width={100}
                           height={100}
                         />
+                        ) : (
+                          <Image
+                          className="object-cover shadow-md bg-gray-200 rounded-full"
+                          src={spotifyLogo}
+                          alt={artist.name}
+                          width={100}
+                          height={100}
+                        />
+                        ) 
+                      }
+                        
                       </a>
                     </Link>
                   </div>
