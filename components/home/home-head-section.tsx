@@ -36,7 +36,7 @@ export default function HomeHeadSection() {
           </div>
         </div>
         <div className="space-y-2">
-          I&apos;m currently leading the Farm Management Solutions team at
+          I&apos;m currently leading the Insight team at
           <AnchorText
             href="https://jala.tech"
             hoverColor="hover:bg-blue-500 hover:text-white"
