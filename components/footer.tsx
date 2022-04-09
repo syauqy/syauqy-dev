@@ -49,7 +49,7 @@ export function Footer() {
           GitHub
         </GhostAnchorText>
         <GhostAnchorText
-          href="https://www.linkedin.com/in/syauqyaziz/"
+          href="https://www.linkedin.com/in/syauqy/"
           hoverColor="hover:bg-brand-linkedin hover:text-white mr-4 mb-3"
           target="_blank"
           rel="nofollow noopener noreferrer"
