@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { ProjectProps } from "~/lib/projects";
+import { ProjectProps } from "@/lib/projects";
 import axios from "axios";
 import clsx from "clsx";
 import { ArrowRightIcon } from "@heroicons/react/solid";
 import HomeProjectSkeleton from "./home-project-skeleton";
-import { GhostAnchorText } from "~/components/ui/ghost-anchor-text";
+import { GhostAnchorText } from "@/components/ui/ghost-anchor-text";
 import _ from "lodash";
 
 export default function HomeProjectsSection() {

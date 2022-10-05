@@ -2,7 +2,7 @@ import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-import { AnchorText } from "~/components/ui/anchor-text";
+import { AnchorText } from "@/components/ui/anchor-text";
 
 const CustomLink = (props) => {
   //   console.log(props);

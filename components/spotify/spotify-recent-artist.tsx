@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { SpotifyProps, getTopArtists } from "~/lib/spotify";
+import { SpotifyProps, getTopArtists } from "@/lib/spotify";
 import ExternalImageLoader from "../ui/external-image-loader";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
-import spotifyLogo from "~/public/spotify-logo.png";
+import spotifyLogo from "@/public/spotify-logo.png";
 import Image from "next/image";
 
 export default function SpotifyRecentArtist() {
@@ -49,23 +49,21 @@ export default function SpotifyRecentArtist() {
                       <a target="_blank" rel="nofollow noopener noreferrer">
                         {artist.images.length ? (
                           <ExternalImageLoader
-                          className="object-cover shadow-md bg-gray-400 rounded-full"
-                          src={artist.images[1].url}
-                          alt={artist.name}
-                          width={100}
-                          height={100}
-                        />
+                            className="object-cover shadow-md bg-gray-400 rounded-full"
+                            src={artist.images[1].url}
+                            alt={artist.name}
+                            width={100}
+                            height={100}
+                          />
                         ) : (
                           <Image
-                          className="object-cover shadow-md bg-gray-100 rounded-full"
-                          src={spotifyLogo}
-                          alt={artist.name}
-                          width={100}
-                          height={100}
-                        />
-                        ) 
-                      }
-                        
+                            className="object-cover shadow-md bg-gray-100 rounded-full"
+                            src={spotifyLogo}
+                            alt={artist.name}
+                            width={100}
+                            height={100}
+                          />
+                        )}
                       </a>
                     </Link>
                   </div>

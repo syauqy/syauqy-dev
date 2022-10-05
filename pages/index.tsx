@@ -1,18 +1,18 @@
 import React from "react";
 import { NextSeo } from "next-seo";
-import { Page } from "~/components/layouts/page";
-import { PageContent } from "~/components/layouts/page-content";
-import { Container } from "~/components/layouts/container";
-import { Footer } from "~/components/footer";
+import { Page } from "@/components/layouts/page";
+import { PageContent } from "@/components/layouts/page-content";
+import { Container } from "@/components/layouts/container";
+import { Footer } from "@/components/footer";
 
-import PocketRecentArticles from "~/components/pocket/pocket-recent-articles";
-import SpotifyRecentArtist from "~/components/spotify/spotify-recent-artist";
-import HomeHeadSection from "~/components/home/home-head-section";
-import HomeProjectsSection from "~/components/home/home-projects-section";
-import HomeBlogList from "~/components/blog/home-blog-list";
+import PocketRecentArticles from "@/components/pocket/pocket-recent-articles";
+import SpotifyRecentArtist from "@/components/spotify/spotify-recent-artist";
+import HomeHeadSection from "@/components/home/home-head-section";
+import HomeProjectsSection from "@/components/home/home-projects-section";
+import HomeBlogList from "@/components/blog/home-blog-list";
 
-import { getAllPosts } from "~/lib/mdx";
-import { PostsProps } from "~/lib/blog";
+import { getAllPosts } from "@/lib/mdx";
+import { PostsProps } from "@/lib/blog";
 
 const meta = {
   title: `Syauqy Aziz`,

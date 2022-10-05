@@ -1,5 +1,5 @@
 import React from "react";
-import { recordPocketArticles } from "~/lib/pocket";
+import { recordPocketArticles } from "@/lib/pocket";
 import axios from "axios";
 import router from "next/router";
 

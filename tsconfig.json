@@ -15,7 +15,10 @@
     "jsx": "preserve",
     "baseUrl": "./",
     "paths": {
-      "~/*": ["./*"]
+      "@/*": ["./*"],
+      "@public/*": ["./public/*"],
+      "@components/*": ["./components/*"],
+      "@lib/*": ["./lib/*"]
     },
     "allowSyntheticDefaultImports": true
   },

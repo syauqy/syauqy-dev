@@ -2,16 +2,16 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { NextSeo } from "next-seo";
-import { Page } from "~/components/layouts/page";
-import { PageContent } from "~/components/layouts/page-content";
-import { Container } from "~/components/layouts/container";
+import { Page } from "@/components/layouts/page";
+import { PageContent } from "@/components/layouts/page-content";
+import { Container } from "@/components/layouts/container";
 import { GetStaticProps } from "next";
-import { Footer } from "~/components/footer";
-import BlogListCard from "~/components/blog/blog-list-card";
+import { Footer } from "@/components/footer";
+import BlogListCard from "@/components/blog/blog-list-card";
 import { ChevronLeftIcon } from "@heroicons/react/outline";
 
-import { getAllPosts } from "~/lib/mdx";
-import { PostsProps, Post } from "~/lib/blog";
+import { getAllPosts } from "@/lib/mdx";
+import { PostsProps, Post } from "@/lib/blog";
 
 const meta = {
   title: `Blog - Syauqy Aziz`,

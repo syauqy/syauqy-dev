@@ -1,6 +1,6 @@
 import React from "react";
-import { AnchorText } from "~/components/ui/anchor-text";
-import { GhostAnchorText } from "~/components/ui/ghost-anchor-text";
+import { AnchorText } from "@/components/ui/anchor-text";
+import { GhostAnchorText } from "@/components/ui/ghost-anchor-text";
 
 export function Footer() {
   return (

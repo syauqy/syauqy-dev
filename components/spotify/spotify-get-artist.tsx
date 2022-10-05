@@ -6,7 +6,7 @@ import {
   SPOTIFY_AUTH_URL,
   SpotifyProps,
   recordSpotifyCode,
-} from "~/lib/spotify";
+} from "@/lib/spotify";
 import querystring from "querystring";
 
 const client_id = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID;
