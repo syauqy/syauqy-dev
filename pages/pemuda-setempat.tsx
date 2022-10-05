@@ -1,12 +1,12 @@
 import React from "react";
 import { NextSeo } from "next-seo";
-import { Page } from "~/components/layouts/page";
-import { PageContent } from "~/components/layouts/page-content";
-import { Container } from "~/components/layouts/container";
-import SpotifyGetArtist from "~/components/spotify/spotify-get-artist";
-import SpotifyRecentArtist from "~/components/spotify/spotify-recent-artist";
-import PocketGetArticles from "~/components/pocket/pocket-get-articles";
-import PocketRecentArticles from "~/components/pocket/pocket-recent-articles";
+import { Page } from "@/components/layouts/page";
+import { PageContent } from "@/components/layouts/page-content";
+import { Container } from "@/components/layouts/container";
+import SpotifyGetArtist from "@/components/spotify/spotify-get-artist";
+import SpotifyRecentArtist from "@/components/spotify/spotify-recent-artist";
+import PocketGetArticles from "@/components/pocket/pocket-get-articles";
+import PocketRecentArticles from "@/components/pocket/pocket-recent-articles";
 
 const meta = {
   title: `Pemuda Setempat`,

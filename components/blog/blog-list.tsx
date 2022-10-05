@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
-import { PostProps } from "~/lib/blog";
-import ImagePlaceholder from "~/lib/image-placeholder";
-import { GhostInternalLink } from "~/components/ui/ghost-interal-link";
+import { PostProps } from "@/lib/blog";
+import ImagePlaceholder from "@/lib/image-placeholder";
+import { GhostInternalLink } from "@/components/ui/ghost-interal-link";
 import dayjs from "dayjs";
 import LocalizedFormat from "dayjs/plugin/localizedFormat";
 

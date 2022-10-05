@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { PocketArticles, PocketList, PocketAuthors } from "~/lib/pocket";
+import { PocketArticles, PocketList, PocketAuthors } from "@/lib/pocket";
 import _ from "lodash";
 import ExternalImageLoader from "../ui/external-image-loader";
 import * as dayjs from "dayjs";

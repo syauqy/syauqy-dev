@@ -2,15 +2,15 @@ import React, { useMemo } from "react";
 import Link from "next/link";
 
 import { NextSeo } from "next-seo";
-import { Page } from "~/components/layouts/page";
-import { PageContent } from "~/components/layouts/page-content";
-import { Container } from "~/components/layouts/container";
+import { Page } from "@/components/layouts/page";
+import { PageContent } from "@/components/layouts/page-content";
+import { Container } from "@/components/layouts/container";
 import { GetStaticProps } from "next";
-import { Footer } from "~/components/footer";
+import { Footer } from "@/components/footer";
 import { getMDXComponent } from "mdx-bundler/client";
-import { getAllPosts, getSinglePost } from "~/lib/mdx";
-import { BlogProps } from "~/lib/blog";
-import mdxcomponents from "~/components/blog/mdx-components";
+import { getAllPosts, getSinglePost } from "@/lib/mdx";
+import { BlogProps } from "@/lib/blog";
+import mdxcomponents from "@/components/blog/mdx-components";
 
 import dayjs from "dayjs";
 import LocalizedFormat from "dayjs/plugin/localizedFormat";

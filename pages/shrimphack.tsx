@@ -15,8 +15,8 @@ import { getAllPosts } from "@/lib/mdx";
 import { PostsProps } from "@/lib/blog";
 
 const meta = {
-  title: `Syauqy Aziz`,
-  description: `Product Manager and Spare-time Web Developer.`,
+  title: `ShrimpHack`,
+  description: `JALA's Primary Internal Hackathon.`,
 };
 
 export default function Home({ posts }: PostsProps) {
@@ -35,7 +35,7 @@ export default function Home({ posts }: PostsProps) {
           <HomeProjectsSection />
           <SpotifyRecentArtist />
           <PocketRecentArticles />
-          <Footer />
+          {/* <Footer /> */}
         </Container>
       </PageContent>
     </Page>

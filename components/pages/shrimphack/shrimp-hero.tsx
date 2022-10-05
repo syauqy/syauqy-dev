@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { AnchorText } from "../ui/anchor-text";
+import { AnchorText } from "@/components/ui/anchor-text";
 import profileHead from "@/public/syauqy-head.jpg";
 
 export default function HomeHeadSection() {
