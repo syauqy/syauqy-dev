@@ -10,6 +10,8 @@ import { Footer } from "@/components/footer";
 import BlogListCard from "@/components/blog/blog-list-card";
 import { ChevronLeftIcon } from "@heroicons/react/outline";
 
+import dayjs from "dayjs";
+
 import { getAllPosts } from "@/lib/mdx";
 import { PostsProps, Post } from "@/lib/blog";
 
@@ -19,6 +21,12 @@ const meta = {
 };
 
 export default function Blogs({ posts }: PostsProps) {
+  const blogs = posts.sort(
+    (a, b) =>
+      dayjs(b.frontmatter.publishedAt).unix() -
+      dayjs(a.frontmatter.publishedAt).unix()
+  );
+  // console.log("blogs", blogs);
   return (
     <Page>
       <NextSeo
@@ -42,12 +50,12 @@ export default function Blogs({ posts }: PostsProps) {
                 <h1 className="text-3xl font-bold">Blog</h1>
                 <p className="text-gray-600 text-md">
                   Here are some of my thoughts and ranting on product, design,
-                  and other stuff.
+                  and other stuffs.
                 </p>
               </div>
               <div className="space-y-16">
                 <ul className="space-y-6">
-                  {posts.map((post: Post, index: number) => (
+                  {blogs.map((post: Post, index: number) => (
                     <BlogListCard key={index} post={post} />
                   ))}
                 </ul>

@@ -10,13 +10,18 @@ dayjs.extend(LocalizedFormat);
 
 export default function HomeBlogList({ posts }: PostsProps) {
   // console.log("blog", posts);
+  const blogs = posts.sort(
+    (a, b) =>
+      dayjs(b.frontmatter.publishedAt).unix() -
+      dayjs(a.frontmatter.publishedAt).unix()
+  );
   return (
     <div className="head p-5 pb-6 w-full bg-white bg-opacity-50 rounded-lg shadow-md">
       <h2 className="text-lg font-semibold pb-4 text-gray-700">
         ✍️ Recent blog
       </h2>
       <ul className="space-y-6">
-        {posts.slice(0, 1).map((post: Post, index: number) => (
+        {blogs.slice(0, 1).map((post: Post, index: number) => (
           <BlogList key={index} post={post} />
         ))}
         <div className="text-blue-600 text-light flex">
