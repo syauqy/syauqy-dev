@@ -4,7 +4,7 @@ import Link from "next/link";
 import { PocketArticles, PocketList, PocketAuthors } from "@/lib/pocket";
 import _ from "lodash";
 import ExternalImageLoader from "../ui/external-image-loader";
-import * as dayjs from "dayjs";
+// import * as dayjs from "dayjs";
 
 export default function PocketRecentArticles() {
   const [pockets, setPocket] = useState<PocketArticles>({} as PocketArticles);
@@ -23,7 +23,7 @@ export default function PocketRecentArticles() {
   }, []);
 
   return (
-    <div className="p-5 pb-6 w-full bg-white bg-opacity-50 rounded-lg shadow-md">
+    <div className="p-5 pb-6 w-full bg-white bg-opacity-50 rounded-xl shadow-md">
       <h2 className="text-lg font-semibold pb-4 text-gray-700">
         🗞️ Recent reads
       </h2>

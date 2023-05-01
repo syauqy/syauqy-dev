@@ -16,7 +16,7 @@ export default function HomeBlogList({ posts }: PostsProps) {
       dayjs(a.frontmatter.publishedAt).unix()
   );
   return (
-    <div className="head p-5 pb-6 w-full bg-white bg-opacity-50 rounded-lg shadow-md">
+    <div className="head p-5 pb-6 w-full bg-white bg-opacity-50 rounded-xl shadow-md">
       <h2 className="text-lg font-semibold pb-4 text-gray-700">
         ✍️ Recent blog
       </h2>
