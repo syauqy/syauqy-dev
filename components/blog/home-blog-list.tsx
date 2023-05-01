@@ -18,10 +18,10 @@ export default function HomeBlogList({ posts }: PostsProps) {
   return (
     <div className="head p-5 pb-6 w-full bg-white bg-opacity-50 rounded-xl shadow-md">
       <h2 className="text-lg font-semibold pb-4 text-gray-700">
-        ✍️ Recent blog
+        ✍️ Recent blog{blogs.length > 1 ? "s" : ""}
       </h2>
       <ul className="space-y-6">
-        {blogs.slice(0, 1).map((post: Post, index: number) => (
+        {blogs.slice(0, 2).map((post: Post, index: number) => (
           <BlogList key={index} post={post} />
         ))}
         <div className="text-blue-600 text-light flex">
