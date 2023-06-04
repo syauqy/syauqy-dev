@@ -21,7 +21,7 @@ export default function SpotifyRecentArtist() {
   // console.log(artists);
 
   return (
-    <div className="p-5 pb-6 w-full bg-white bg-opacity-50 rounded-lg shadow-md">
+    <div className="p-5 pb-6 w-full bg-white bg-opacity-50 rounded-xl shadow-md">
       <div className="space-y-2 pb-4">
         <h2 className="text-lg font-semibold text-gray-700">
           🎸 Recently I&apos;m listening to

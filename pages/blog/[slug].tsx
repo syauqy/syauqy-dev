@@ -60,8 +60,8 @@ const Blog = (props: BlogProps) => {
               </a>
             </Link>
           </div>
-          <div className="p-5 pb-6 w-full bg-opacity-50 min-h-screen">
-            <div className="space-y-3 text-gray-700">
+          <div className="p-5 pb-6 w-full bg-opacity-50 min-h-screen ">
+            <div className="space-y-3 text-gray-700 pb-10 border-b">
               <div className="space-y-1">
                 <h1 className="text-3xl font-bold">
                   {props.frontmatter.title}

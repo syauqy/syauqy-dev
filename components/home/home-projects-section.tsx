@@ -33,7 +33,7 @@ export default function HomeProjectsSection() {
   }, []);
 
   return (
-    <div className="head p-5 pb-6 w-full bg-white bg-opacity-50 rounded-lg shadow-md">
+    <div className="head p-5 pb-6 w-full bg-white bg-opacity-50 rounded-xl shadow-md">
       <h2 className="text-lg font-semibold pb-4 text-gray-700">
         💻 Recent projects and contributions
       </h2>

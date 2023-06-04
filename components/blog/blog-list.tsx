@@ -25,13 +25,16 @@ export default function BlogList({ post }: PostProps) {
       ) : (
         ""
       )}
-      <GhostInternalLink
-        className="text-lg text-gray-700 font-semibold truncate mt-10"
-        path={`/blog/${post.slug}`}
-        hoverColor="hover:bg-blue-500 hover:text-white"
-      >
-        {post.frontmatter.title}
-      </GhostInternalLink>
+      <div className="truncate">
+        <GhostInternalLink
+          className="text-lg text-gray-700 font-semibold truncate mt-10"
+          path={`/blog/${post.slug}`}
+          hoverColor="hover:bg-blue-500 hover:text-white"
+        >
+          {post.frontmatter.title}
+        </GhostInternalLink>
+      </div>
+
       <p className="text-md text-gray-600">{post.frontmatter.summary}</p>
       <p className="text-sm text-gray-600 font-light">
         {dayjs(post.frontmatter.publishedAt).format("LL")}

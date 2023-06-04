@@ -28,7 +28,12 @@ export const GhostInternalLink = React.forwardRef<
   ) => (
     <Link href={path}>
       <a
-        className={clsx("rounded hover:px-1", className, bgColor, hoverColor)}
+        className={clsx(
+          "rounded hover:px-1 truncate",
+          className,
+          bgColor,
+          hoverColor
+        )}
         {...rest}
       >
         {children}
