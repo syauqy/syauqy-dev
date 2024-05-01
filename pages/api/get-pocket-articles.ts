@@ -16,7 +16,7 @@ export default async function PocketGetArticles(
     },
     data: {
       consumer_key: process.env.NEXT_PUBLIC_POCKET_CONSUMER_KEY,
-      access_token: req.query.access_token,
+      access_token: process.env.POCKET_ACCESS_TOKEN,
       count: 5,
       detailType: "complete",
       sort: "newest",

@@ -31,7 +31,7 @@ export default function Home({ posts }: PostsProps) {
       <PageContent>
         <Container className="px-4 space-y-5">
           <HomeHeadSection />
-          <HomeBlogList posts={posts} />
+          {/* <HomeBlogList posts={posts} /> */}
           <HomeProjectsSection />
           <SpotifyRecentArtist />
           <PocketRecentArticles />

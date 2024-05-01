@@ -40,6 +40,9 @@ export type PocketList = {
   readonly top_image_url: string;
   readonly item_id?: string;
   readonly authors?: PocketAuthors[];
+  readonly image?: {
+    src: string;
+  };
 };
 
 export type PocketAuthors = {

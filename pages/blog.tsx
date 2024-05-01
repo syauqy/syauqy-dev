@@ -5,7 +5,6 @@ import { NextSeo } from "next-seo";
 import { Page } from "@/components/layouts/page";
 import { PageContent } from "@/components/layouts/page-content";
 import { Container } from "@/components/layouts/container";
-import { GetStaticProps } from "next";
 import { Footer } from "@/components/footer";
 import BlogListCard from "@/components/blog/blog-list-card";
 import { ChevronLeftIcon } from "@heroicons/react/outline";
@@ -26,7 +25,6 @@ export default function Blogs({ posts }: PostsProps) {
       dayjs(b.frontmatter.publishedAt).unix() -
       dayjs(a.frontmatter.publishedAt).unix()
   );
-  // console.log("blogs", blogs);
   return (
     <Page>
       <NextSeo
@@ -55,9 +53,11 @@ export default function Blogs({ posts }: PostsProps) {
               </div>
               <div className="space-y-16">
                 <ul className="space-y-6">
-                  {blogs.map((post: Post, index: number) => (
-                    <BlogListCard key={index} post={post} />
-                  ))}
+                  {blogs.map((post: Post, index: number) => {
+                    if (post.frontmatter.published) {
+                      return <BlogListCard key={index} post={post} />;
+                    }
+                  })}
                 </ul>
                 <div className="grid grid-cols-1 justify-items-center">
                   <p className="text-gray-600 italic">That&apos;s all folks!</p>

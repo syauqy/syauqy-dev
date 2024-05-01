@@ -21,9 +21,11 @@ export default function HomeBlogList({ posts }: PostsProps) {
         ✍️ Recent blog{blogs.length > 1 ? "s" : ""}
       </h2>
       <ul className="space-y-6">
-        {blogs.slice(0, 2).map((post: Post, index: number) => (
-          <BlogList key={index} post={post} />
-        ))}
+        {blogs.slice(0, 2).map((post: Post, index: number) => {
+          if (post.frontmatter.published) {
+            return <BlogList key={index} post={post} />;
+          }
+        })}
         <div className="text-blue-600 text-light flex">
           <GhostInternalLink
             className="flex"

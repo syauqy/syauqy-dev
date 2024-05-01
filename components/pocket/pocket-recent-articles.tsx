@@ -11,7 +11,7 @@ export default function PocketRecentArticles() {
 
   async function getPocketArticles() {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_HOST}/api/get-pocket-articles?access_token=${process.env.NEXT_PUBLIC_POCKET_ACCESS_TOKEN}`
+      `${process.env.NEXT_PUBLIC_HOST}/api/get-pocket-articles`
     );
     const pocket = await response.json();
     setPocket(pocket.list);
@@ -74,14 +74,18 @@ export default function PocketRecentArticles() {
                         )}
                       </div>
                     </div>
-                    <ExternalImageLoader
-                      className="object-cover w-full h-full"
-                      src={pocket.top_image_url}
-                      alt={pocket.resolved_title}
-                      width={180}
-                      height={100}
-                      quality={90}
-                    />
+                    {pocket?.image ? (
+                      <ExternalImageLoader
+                        className="object-cover w-full h-full"
+                        src={pocket.top_image_url || pocket.image.src}
+                        alt={pocket.resolved_title}
+                        width={180}
+                        height={100}
+                        quality={90}
+                      />
+                    ) : (
+                      <div className="bg-gray-300"></div>
+                    )}
                   </a>
                 </Link>
               </div>

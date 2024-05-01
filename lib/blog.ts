@@ -5,6 +5,7 @@ export type BlogProps = {
     publishedAt: string;
     summary: string;
     title: string;
+    published: boolean;
   };
 };
 
@@ -23,5 +24,6 @@ export type Post = {
     publishedAt: string;
     summary: string;
     title: string;
+    published: boolean;
   };
 };
