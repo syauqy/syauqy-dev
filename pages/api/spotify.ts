@@ -7,6 +7,6 @@ export default async function Spotify(
   res: NextApiResponse
 ) {
   const response = await getTopArtists();
-  console.log(response);
+  // console.log(response);
   res.status(200).json(response);
 }

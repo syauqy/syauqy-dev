@@ -15,16 +15,10 @@ export default function HomeProjectsSection() {
   // };
   function showProjects() {
     axios
-      .get(
-        `${process.env.NEXT_PUBLIC_AIRTABLE_URI}/recent_projects?sort%5B0%5D%5Bfield%5D=last_update
-&sort%5B0%5D%5Bdirection%5D=desc`,
-        {
-          headers: {
-            Authorization: `Bearer ` + process.env.NEXT_PUBLIC_AIRTABLE_TOKEN,
-          },
-        }
-      )
-      .then((res) => setProjects(res.data))
+      .get(`/api/get-project-list`)
+      .then((res) => {
+        setProjects(res.data);
+      })
       .catch((error) => console.log(error.data));
   }
 

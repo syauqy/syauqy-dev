@@ -6,11 +6,13 @@ export const USER_TOP_ARTIST_ENDPOINT =
 const SPOTIFY_REDIRECT_URI = `${process.env.NEXT_PUBLIC_HOST}/pemuda-setempat`;
 export const SPOTIFY_AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID}&redirect_uri=${SPOTIFY_REDIRECT_URI}&scope=user-read-currently-playing%20user-top-read%20user-read-recently-played&response_type=code&state=34fFs29kd09`;
 
-const client_id = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID;
-const client_secret = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET;
+// const client_id = process.env.SPOTIFY_CLIENT_ID;
+// const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
 const SPOTIFY_TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
-const refresh_token = process.env.NEXT_PUBLIC_SPOTIFY_REFRESH_TOKEN;
-const basic = Buffer.from(`${client_id}:${client_secret}`).toString("base64");
+
+// console.log(process.env.SPOTIFY_CLIENT_ID, process.env.SPOTIFY_CLIENT_SECRET);
+// const refresh_token = process.env.SPOTIFY_REFRESH_TOKEN;
+// const basic = Buffer.from(`${client_id}:${client_secret}`).toString("base64");
 
 export type SpotifyProps = {
   readonly items: SpotifyArtist[];
@@ -32,32 +34,39 @@ type SpotifyArtist = {
 };
 
 export function recordSpotifyCode(code: string) {
-  axios({
-    method: "patch",
-    headers: {
-      Authorization: `Bearer ${process.env.NEXT_PUBLIC_AIRTABLE_TOKEN}`,
-      "Content-Type": "application/json",
-    },
-    url: `${process.env.NEXT_PUBLIC_AIRTABLE_URI}/spotify_code`,
-    data: {
-      records: [
-        {
-          id: "recaGiYzytfvX2bFW",
-          fields: {
-            code: code,
-          },
-        },
-      ],
-    },
-  });
+  console.log(code);
+  axios.get(`/api/record-spotify-code?code=${code}`);
+
+  // axios({
+  //   method: "patch",
+  //   headers: {
+  //     Authorization: `Bearer ${process.env.AIRTABLE_TOKEN}`,
+  //     "Content-Type": "application/json",
+  //   },
+  //   url: `${process.env.AIRTABLE_URI}/spotify_code`,
+  //   data: {
+  //     records: [
+  //       {
+  //         id: "recaGiYzytfvX2bFW",
+  //         fields: {
+  //           code: code,
+  //         },
+  //       },
+  //     ],
+  //   },
+  // });
 }
 
 //get spotify token
 export const getSpotifyToken = async () => {
+  const basic = await axios.get("/api/get-spotify-basic");
+  // console.log(basic);
+  const refresh_token = basic.data.refresh_token;
+  // console.log(basic.data.refresh_token);
   const response = await axios(SPOTIFY_TOKEN_ENDPOINT, {
     method: "POST",
     headers: {
-      Authorization: `Basic ${basic}`,
+      Authorization: `Basic ${basic.data.basic}`,
       "Content-Type": "application/x-www-form-urlencoded",
     },
     data: querystring.stringify({
