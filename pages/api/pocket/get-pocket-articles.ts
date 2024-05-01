@@ -15,7 +15,7 @@ export default async function PocketGetArticles(
       "X-Accept": "application/json",
     },
     data: {
-      consumer_key: process.env.NEXT_PUBLIC_POCKET_CONSUMER_KEY,
+      consumer_key: process.env.POCKET_CONSUMER_KEY,
       access_token: process.env.POCKET_ACCESS_TOKEN,
       count: 5,
       detailType: "complete",

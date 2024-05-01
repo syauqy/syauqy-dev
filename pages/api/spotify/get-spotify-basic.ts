@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import axios from "axios";
+// import axios from "axios";
 
 export default async function GetSpotifyBasic(
   req: NextApiRequest,

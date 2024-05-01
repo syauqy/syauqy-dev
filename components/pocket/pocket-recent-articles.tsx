@@ -10,7 +10,7 @@ export default function PocketRecentArticles() {
   const [pockets, setPocket] = useState<PocketArticles>({} as PocketArticles);
 
   async function getPocketArticles() {
-    const response = await fetch(`/api/get-pocket-articles`);
+    const response = await fetch(`/api/pocket/get-pocket-articles`);
     const pocket = await response.json();
     setPocket(pocket.list);
   }

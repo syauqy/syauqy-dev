@@ -15,7 +15,7 @@ export default function HomeProjectsSection() {
   // };
   function showProjects() {
     axios
-      .get(`/api/get-project-list`)
+      .get(`/api/base/get-project-list`)
       .then((res) => {
         setProjects(res.data);
       })

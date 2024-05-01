@@ -35,31 +35,12 @@ type SpotifyArtist = {
 
 export function recordSpotifyCode(code: string) {
   console.log(code);
-  axios.get(`/api/record-spotify-code?code=${code}`);
-
-  // axios({
-  //   method: "patch",
-  //   headers: {
-  //     Authorization: `Bearer ${process.env.AIRTABLE_TOKEN}`,
-  //     "Content-Type": "application/json",
-  //   },
-  //   url: `${process.env.AIRTABLE_URI}/spotify_code`,
-  //   data: {
-  //     records: [
-  //       {
-  //         id: "recaGiYzytfvX2bFW",
-  //         fields: {
-  //           code: code,
-  //         },
-  //       },
-  //     ],
-  //   },
-  // });
+  axios.get(`/api/base/record-spotify-code?code=${code}`);
 }
 
 //get spotify token
 export const getSpotifyToken = async () => {
-  const basic = await axios.get("/api/get-spotify-basic");
+  const basic = await axios.get("/api/spotify/get-spotify-basic");
   // console.log(basic);
   const refresh_token = basic.data.refresh_token;
   // console.log(basic.data.refresh_token);
@@ -86,15 +67,7 @@ export const getSpotifyToken = async () => {
 export const getTopArtists = async () => {
   const access_token = await getSpotifyToken();
   const response = await axios
-    .get(USER_TOP_ARTIST_ENDPOINT, {
-      headers: {
-        Authorization: `Bearer ${access_token}`,
-      },
-      params: {
-        time_range: "short_term",
-        limit: 10,
-      },
-    })
+    .get(`/api/spotify/get-top-artists?access_token=${access_token}`)
     .then((res) => {
       // console.log("dapet data artist", res.data);
       return res.data;

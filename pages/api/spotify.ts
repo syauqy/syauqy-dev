@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { getTopArtists } from "@/lib/spotify";
-import axios from "axios";
+// import axios from "axios";
 
 export default async function Spotify(
   req: NextApiRequest,
