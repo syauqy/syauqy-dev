@@ -34,6 +34,7 @@ type PocketRecords = {
 };
 
 export type PocketList = {
+  readonly status: number;
   readonly excerpt?: string;
   readonly resolved_title?: string;
   readonly resolved_url: string;

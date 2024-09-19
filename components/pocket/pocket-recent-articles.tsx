@@ -28,66 +28,69 @@ export default function PocketRecentArticles() {
       <div className="flex flex-col space-y-4">
         {_.valuesIn(pockets).length ? (
           _.values(
-            _.mapValues(_.sortBy(pockets, "sort_id"), (pocket: PocketList) => (
-              <div
-                key={pocket.item_id}
-                className="border-gray-300 rounded-md border hover:shadow-md overflow-hidden"
-              >
-                <Link href={pocket.resolved_url} passHref>
-                  <a
-                    target="_blank"
-                    rel="nofollow noopener noreferrer"
-                    className="grid grid-cols-3 gap-1 overflow-hidden"
+            _.mapValues(_.sortBy(pockets, "sort_id"), (pocket: PocketList) => {
+              if (pocket.status == 0) {
+                return (
+                  <div
+                    key={pocket.item_id}
+                    className="border-gray-300 rounded-md border hover:shadow-md overflow-hidden"
                   >
-                    <div className="space-y-2 p-4 col-span-2">
-                      <div className="space-y-2">
-                        <h2 className="text-md text-gray-700 font-medium line-clamp-2 leading-normal">
-                          {pocket.resolved_title}
-                        </h2>
-                        <p className="text-gray-500 text-xs font-light line-clamp-3">
-                          {pocket.excerpt ? pocket.excerpt : ""}
-                        </p>
-                      </div>
-                      <div className="text-gray-500 text-sm truncate font-light">
-                        {pocket.authors ? (
-                          _.values(
-                            _.mapValues(
-                              pocket.authors,
-                              (auth: PocketAuthors) => (
-                                <span key={auth.author_id}>
-                                  {auth.author_id ===
-                                  _.findLastKey(pocket.authors)
-                                    ? auth.name
-                                    : auth.name + ", "}
-                                </span>
+                    <a
+                      href={pocket.resolved_url}
+                      target="_blank"
+                      rel="nofollow noopener noreferrer"
+                      className="grid grid-cols-3 gap-1 overflow-hidden"
+                    >
+                      <div className="space-y-2 p-4 col-span-2">
+                        <div className="space-y-2">
+                          <h2 className="text-md text-gray-700 font-medium line-clamp-2 leading-normal">
+                            {pocket.resolved_title}
+                          </h2>
+                          <p className="text-gray-500 text-xs font-light line-clamp-3">
+                            {pocket.excerpt ? pocket.excerpt : ""}
+                          </p>
+                        </div>
+                        <div className="text-gray-500 text-sm truncate font-light">
+                          {pocket.authors ? (
+                            _.values(
+                              _.mapValues(
+                                pocket.authors,
+                                (auth: PocketAuthors) => (
+                                  <span key={auth.author_id}>
+                                    {auth.author_id ===
+                                    _.findLastKey(pocket.authors)
+                                      ? auth.name
+                                      : auth.name + ", "}
+                                  </span>
+                                )
                               )
                             )
-                          )
-                        ) : (
-                          <div>
-                            <p className="text-gray-500 text-sm truncate font-light">
-                              {pocket.resolved_url}
-                            </p>
-                          </div>
-                        )}
+                          ) : (
+                            <div>
+                              <p className="text-gray-500 text-sm truncate font-light">
+                                {pocket.resolved_url}
+                              </p>
+                            </div>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                    {pocket?.image ? (
-                      <ExternalImageLoader
-                        className="object-cover w-full h-full"
-                        src={pocket.top_image_url || pocket.image.src}
-                        alt={pocket.resolved_title}
-                        width={180}
-                        height={100}
-                        quality={90}
-                      />
-                    ) : (
-                      <div className="bg-gray-300"></div>
-                    )}
-                  </a>
-                </Link>
-              </div>
-            ))
+                      {pocket?.image ? (
+                        <ExternalImageLoader
+                          className="object-cover w-full h-full"
+                          src={pocket.top_image_url || pocket.image.src}
+                          alt={`${pocket.resolved_title}`}
+                          width={180}
+                          height={100}
+                          quality={90}
+                        />
+                      ) : (
+                        <div className="bg-gray-300"></div>
+                      )}
+                    </a>
+                  </div>
+                );
+              }
+            })
           )
         ) : (
           <div className="border-gray-300 rounded-md border p-4">

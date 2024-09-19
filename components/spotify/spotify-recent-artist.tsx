@@ -45,27 +45,29 @@ export default function SpotifyRecentArtist() {
                   theme="syauqy"
                 >
                   <div>
-                    <Link href={artist.external_urls.spotify} passHref>
-                      <a target="_blank" rel="nofollow noopener noreferrer">
-                        {artist.images.length ? (
-                          <ExternalImageLoader
-                            className="object-cover shadow-md bg-gray-400 rounded-full"
-                            src={artist.images[1].url}
-                            alt={artist.name}
-                            width={100}
-                            height={100}
-                          />
-                        ) : (
-                          <Image
-                            className="object-cover shadow-md bg-gray-100 rounded-full"
-                            src={spotifyLogo}
-                            alt={artist.name}
-                            width={100}
-                            height={100}
-                          />
-                        )}
-                      </a>
-                    </Link>
+                    <a
+                      href={artist.external_urls.spotify}
+                      target="_blank"
+                      rel="nofollow noopener noreferrer"
+                    >
+                      {artist.images.length ? (
+                        <ExternalImageLoader
+                          className="object-cover shadow-md bg-gray-400 rounded-full"
+                          src={artist.images[1].url}
+                          alt={artist.name}
+                          width={100}
+                          height={100}
+                        />
+                      ) : (
+                        <Image
+                          className="object-cover shadow-md bg-gray-100 rounded-full"
+                          src={spotifyLogo}
+                          alt={artist.name}
+                          width={100}
+                          height={100}
+                        />
+                      )}
+                    </a>
                   </div>
                 </Tippy>
               </div>
