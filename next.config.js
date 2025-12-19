@@ -29,9 +29,7 @@ const securityHeaders = [
 ];
 
 module.exports = {
-  // experimental: { esmExternals: true },
   // https://nextjs.org/docs/api-reference/next.config.js/react-strict-mode
-  swcMinify: true,
   reactStrictMode: true,
   headers: async () => {
     return [
@@ -42,20 +40,23 @@ module.exports = {
     ];
   },
   images: {
-    deviceSizes: [420, 640, 750, 828, 1080],
-    // domains: ["res.cloudinary.com"],
-    // loader: "cloudinary",
-    // path: "https://res.cloudinary.com/hajiudin/image/fetch/",
-    imageSizes: [300, 400, 640],
-    domains: [
-      "i.scdn.co",
-      "openviewpartners.com",
-      "nu.aeon.co",
-      "media.giphy.com",
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "i.scdn.co",
+      },
+      {
+        protocol: "https",
+        hostname: "openviewpartners.com",
+      },
+      {
+        protocol: "https",
+        hostname: "nu.aeon.co",
+      },
+      {
+        protocol: "https",
+        hostname: "media.giphy.com",
+      },
     ],
-  },
-  i18n: {
-    defaultLocale: "en-US",
-    locales: ["en-US", "id"],
   },
 };

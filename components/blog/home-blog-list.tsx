@@ -4,7 +4,7 @@ import BlogList from "./blog-list";
 import { GhostInternalLink } from "@/components/ui/ghost-interal-link";
 import dayjs from "dayjs";
 import LocalizedFormat from "dayjs/plugin/localizedFormat";
-import { ArrowRightIcon } from "@heroicons/react/solid";
+import { ArrowRightIcon } from "@heroicons/react/24/solid";
 
 dayjs.extend(LocalizedFormat);
 

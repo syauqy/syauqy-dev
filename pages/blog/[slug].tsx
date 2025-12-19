@@ -14,7 +14,7 @@ import mdxcomponents from "@/components/blog/mdx-components";
 
 import dayjs from "dayjs";
 import LocalizedFormat from "dayjs/plugin/localizedFormat";
-import { ChevronLeftIcon } from "@heroicons/react/outline";
+import { ChevronLeftIcon } from "@heroicons/react/24/outline";
 
 dayjs.extend(LocalizedFormat);
 

@@ -4,12 +4,11 @@ import { Page } from "@/components/layouts/page";
 import { PageContent } from "@/components/layouts/page-content";
 import { Container } from "@/components/layouts/container";
 import { Footer } from "@/components/footer";
-
-import PocketRecentArticles from "@/components/pocket/pocket-recent-articles";
 import SpotifyRecentArtist from "@/components/spotify/spotify-recent-artist";
 import HomeHeadSection from "@/components/home/home-head-section";
+import HomeIndieProductsSection from "@/components/home/home-indie-products-section";
 import HomeProjectsSection from "@/components/home/home-projects-section";
-import HomeBlogList from "@/components/blog/home-blog-list";
+import HomePatentsSection from "@/components/home/home-patents-section";
 
 import { getAllPosts } from "@/lib/mdx";
 import { PostsProps } from "@/lib/blog";
@@ -31,10 +30,12 @@ export default function Home({ posts }: PostsProps) {
       <PageContent>
         <Container className="px-4 space-y-5">
           <HomeHeadSection />
+          <HomeIndieProductsSection />
           {/* <HomeBlogList posts={posts} /> */}
           <HomeProjectsSection />
+          <HomePatentsSection />
           <SpotifyRecentArtist />
-          <PocketRecentArticles />
+          {/* <PocketRecentArticles /> */}
           <Footer />
         </Container>
       </PageContent>

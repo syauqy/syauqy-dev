@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { ProjectProps } from "@/lib/projects";
 import axios from "axios";
 import clsx from "clsx";
-import { ArrowRightIcon } from "@heroicons/react/solid";
+import { ArrowRightIcon } from "@heroicons/react/24/solid";
 import HomeProjectSkeleton from "./home-project-skeleton";
 import { GhostAnchorText } from "@/components/ui/ghost-anchor-text";
 import _ from "lodash";
@@ -36,7 +36,7 @@ export default function HomeProjectsSection() {
           projects?.records.map((project, i: number) => (
             <div
               key={i}
-              className="border-gray-300 rounded-md border hover:shadow-md"
+              className="border-gray-300 rounded-2xl border hover:shadow-md"
             >
               <div className="space-y-3 p-4">
                 <div className="space-y-1">
@@ -45,7 +45,7 @@ export default function HomeProjectsSection() {
                     href={project.fields.main_url}
                     hoverColor="hover:bg-blue-500 hover:text-white"
                     target="_blank"
-                    rel="nofollow noopener noreferrer"
+                    rel="noopener noreferrer"
                   >
                     {project.fields.name}
                   </GhostAnchorText>
@@ -62,7 +62,7 @@ export default function HomeProjectsSection() {
                       target="_blank"
                       className="text-blue-600 text-sm font-medium"
                       hoverColor="hover:bg-blue-500 hover:text-white"
-                      rel="nofollow noopener noreferrer"
+                      rel="noopener noreferrer"
                     >
                       {project.fields.repo_title}
                     </GhostAnchorText>

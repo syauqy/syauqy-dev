@@ -7,7 +7,7 @@ import { PageContent } from "@/components/layouts/page-content";
 import { Container } from "@/components/layouts/container";
 import { Footer } from "@/components/footer";
 import BlogListCard from "@/components/blog/blog-list-card";
-import { ChevronLeftIcon } from "@heroicons/react/outline";
+import { ChevronLeftIcon } from "@heroicons/react/24/outline";
 
 import dayjs from "dayjs";
 

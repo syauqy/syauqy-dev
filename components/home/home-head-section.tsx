@@ -22,11 +22,10 @@ export default function HomeHeadSection() {
           <div className="space-y-2 col-span-2 ">
             <h1 className="text-2xl font-bold">Hey, I&apos;m Syauqy! 👋</h1>
             <p>
-              I&apos;m a founder, product guy, and
+              Founder, product builder, and a
               <AnchorText
                 href="https://github.com/syauqy"
                 hoverColor="hover:bg-blue-500 hover:text-white"
-                rel="nofollow noopener noreferrer"
                 target="_blank"
               >
                 spare-time coder
@@ -36,11 +35,10 @@ export default function HomeHeadSection() {
           </div>
         </div>
         <div className="space-y-2">
-          I&apos;m currently leading the product and engineering team at
+          I&apos;m leading the product and engineering team at
           <AnchorText
             href="https://jala.tech"
             hoverColor="hover:bg-blue-500 hover:text-white"
-            rel="nofollow noopener noreferrer"
             target="_blank"
           >
             Jala
@@ -56,8 +54,8 @@ export default function HomeHeadSection() {
             >
               Amagine Interactive
             </AnchorText>
-            , an independent game studio focused on mobile games. Before that, I
-            spent my college free time on game development, robotics, and
+            , an indie game studio focused on mobile games. Before that, I spent
+            my college free time on game development, robotics, and
             <AnchorText
               href="https://www.facebook.com/photo/?fbid=10207696324945022&set=a.10201193465777607"
               hoverColor="hover:bg-blue-500 hover:text-white"
@@ -69,16 +67,17 @@ export default function HomeHeadSection() {
             projects.
           </div>
           <div>
-            Surprisingly,
+            One fun highlight:
             <AnchorText
               href="https://youtu.be/oP9kAzBcpr8"
               hoverColor="hover:bg-blue-500 hover:text-white"
               rel="nofollow noopener noreferrer"
               target="_blank"
             >
-              one of my hackathon game
+              a hackathon game
             </AnchorText>{" "}
-            played by a Thailand Youtuber and got 1.5 M views. 😂
+            I built was picked up by a Thai YouTuber and unexpectedly reached
+            1.5 M views. 😂
           </div>
         </div>
       </div>
