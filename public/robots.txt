@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://syauqy.dev
+
+# Sitemaps
+Sitemap: https://syauqy.dev/sitemap.xml
