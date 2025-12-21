@@ -26,7 +26,8 @@ const products: Product[] = [
     image: "/images/icon-pippin.jpg",
     description:
       "A minimalist journaling app designed for overthinkers. A safe place for your thoughts. No pressure, no judgment, no advice.",
-    downloadUrl: "", // Update with actual URL
+    downloadUrl:
+      "https://apps.apple.com/us/app/pippin-overthinking-journal/id6755423327", // Update with actual URL
     landingPageUrl: "https://getpippin.app", // Update with actual URL
   },
 ];
@@ -42,7 +43,7 @@ export default function HomeIndieProductsSection() {
         </p>
       </div>
 
-      <div className="grid gap-6 md:gap-4 md:grid-cols-2">
+      <div className="grid gap-12 md:gap-4 md:grid-cols-2">
         {products.map((product) => (
           <div key={product.title} className="space-y-4">
             <div className="aspect-square size-20 relative bg-gray-100 rounded-2xl shadow-md overflow-hidden hover:rotate-6">
@@ -72,7 +73,7 @@ export default function HomeIndieProductsSection() {
               <div className="flex flex-col gap-1">
                 <div className="flex flex-col items-start gap-2">
                   <a
-                    href="https://apps.apple.com/us/app/bill-organizer-matcharge/id6752604627?itscg=30200&itsct=apps_box_badge&mttnsubad=6752604627"
+                    href={product.downloadUrl}
                     className="inline-block"
                     target="_blank"
                     rel="noopener noreferrer"
