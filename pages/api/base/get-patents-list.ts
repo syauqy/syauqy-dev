@@ -1,17 +1,17 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import axios from "axios";
+import { PATENTS } from "@/data/patents/patents-list";
 
 export default async function GetPatentsList(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) {
-  const patents = await axios({
-    method: "get",
-    baseURL: `${process.env.AIRTABLE_URL}/patents`,
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ` + process.env.AIRTABLE_TOKEN,
-    },
-  });
-  res.status(200).json(patents.data);
+  try {
+    // Return local patents data stored in the repo
+    res.status(200).json(PATENTS);
+  } catch (error: any) {
+    console.error("get-patents-list error:", error?.message || error);
+    res
+      .status(500)
+      .json({ error: { message: error?.message || "Unknown error" } });
+  }
 }

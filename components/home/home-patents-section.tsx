@@ -53,7 +53,7 @@ export default function HomePatentsSection() {
                   {patent.fields.inventors &&
                     patent.fields.inventors.length > 0 && (
                       <p className="text-gray-500 text-xs font-light">
-                        {patent.fields.inventors}
+                        {patent.fields.inventors.join(", ")}
                       </p>
                     )}
                 </div>
