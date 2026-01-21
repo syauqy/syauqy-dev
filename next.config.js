@@ -1,12 +1,12 @@
 const ContentSecurityPolicy = `
   default-src 'self';
-  connect-src 'self' api.airtable.com stats.g.doubleclick.net res.cloudinary.com accounts.spotify.com api.spotify.com;
-  script-src 'self' 'unsafe-inline' 'unsafe-eval';
+  connect-src 'self' api.airtable.com stats.g.doubleclick.net res.cloudinary.com accounts.spotify.com api.spotify.com *.posthog.com;
+  script-src 'self' 'unsafe-inline' 'unsafe-eval' *.posthog.com;
   style-src 'self' 'unsafe-inline' fonts.googleapis.com;
   frame-src 'self' cloudinary.com;
   img-src 'self' blob: data: https:;
   frame-ancestors 'none';
-  font-src data:;
+  font-src 'self' data: fonts.gstatic.com;
 `;
 
 const securityHeaders = [
